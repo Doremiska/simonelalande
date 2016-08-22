@@ -3,4 +3,5 @@
 /phpunit.xml
 /var/
 /vendor/
+/tests/
 /web/bundles/
