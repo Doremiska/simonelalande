@@ -1,0 +1,14 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{% block website_title %}{% endblock %} à Montpellier - {{ parent() }}{% endblock %}
+
+{% block description %}Séances individuelles {% block website_description %}{% endblock %} à Montpellier. Simone LALANDE - Tél : 06 18 67 44 08, Adresse : 1 rue Alauzet 34090 MONTPELLIER.{% endblock %}
+
+
+
+{% block body %}
+    <h1>{% block website_h1 %}{% endblock %} - Montpellier</h1> 
+       
+    {% block website_body %}{% endblock %}
+
+{% endblock %}

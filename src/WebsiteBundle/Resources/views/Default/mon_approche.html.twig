@@ -1,0 +1,44 @@
+{% extends "::layout.html.twig" %}
+
+
+
+{% block title %}Mon approche - {{ parent() }}{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block mon_approche %}style="background-color: rgb(253,172,83); color: rgb(128,51,0);"{% endblock %}
+
+
+
+{% block body %}
+
+    <h1>Mon approche</h1> 
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Introduction  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <div id="mon_approche">
+        <figure class="float">
+            <a class="medium" href="{{ asset('bundles/website/images/simone-lalande.jpg') }}"><img src="{{ asset('bundles/website/images/simone-lalande_medium.jpg') }}" alt="Simone Lalande" /></a>
+            <a class="mini" href="{{ asset('bundles/website/images/simone-lalande.jpg') }}"><img src="{{ asset('bundles/website/images/simone-lalande_mini.jpg') }}" alt="Simone Lalande" /></a>
+            <figcaption>Simone LALANDE</figcaption>
+        </figure>
+
+        <div>
+            <p>Attirée très tôt par le <strong>développement personnel</strong>, je me suis orientée après plusieurs années de travail en entreprise, dans le domaine de la <strong>Relation d'Aide</strong> et de l'accompagnement thérapeutique.</p>
+
+            <p>Formée depuis plus de 20 ans à la Sophrologie (diplômée de l'<strong><a href="http://www.ecole-formation-sophrologie.fr" title="www.ecole-formation-sophrologie.fr" target="_blank">École Français de Sophrologie</a></strong> de Montpellier), je me suis rapidement intéressée à différentes techniques thérapeutiques jusqu'à la rencontre avec l'école québécoise de Lise Bourbeau <strong><a href="http://www.ecoutetoncorps.com/fr/" title="www.ecoutetoncorps.com" target="_blank">Écoute Ton Corps</a></strong> dont j'ai suivi la formation qui a considérablement enrichie ma pratique d'accompagnement depuis mes dix ans d'expérience.</p>
+
+            <p>L'équilibre de vie commence par une meilleure compréhension de qui nous sommes afin de s'accueillir soi-même et
+            atteindre <strong>l'harmonie avec soi</strong>, un cœur à cœur avec soi et avec les autres.</p>
+
+            <p>Je serai très heureuse de vous accompagner sur ce <em>chemin vers soi</em> pour retrouver votre pouvoir créateur, votre équilibre et votre joie de vivre.</p>
+
+        </div>  
+
+        <div style="margin-top:50px; text-align: center;">
+            <p style="color:orange; font-family:georgia,serif; font-size:1.2em;"><em><strong>« Puisse chaque Être sur terre être heureux »</strong></em><br /><br /><img src="{{ asset('bundles/website/images/lotus.jpg') }}" alt="Photo de lotus" /></p>
+        </div>
+
+    </div>
+
+{% endblock %}

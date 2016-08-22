@@ -1,0 +1,78 @@
+{% extends "::layout.html.twig" %}
+
+
+
+{% block title %}Évènements passés - {{ parent() }}{% endblock %}
+
+{% block description %}{% endblock %}
+
+
+
+{% block body %}
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section Évènements passés - 2015/2016 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section>
+        <h2>Évènements passés - 2015/2016</h2>
+        <p>Pour voir les évènements à venir : <a href="{{ path('website_homepage') }}#actualites">cliquez ici !</a></p>
+
+
+    </section>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section Évènements passés - 2014/2015 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section id="actualites">
+        <h2>Évènements passés - 2014/2015</h2>
+
+        <!-- Atelier : comment gérer la colère -->
+        <div>
+            <article>
+                <div class="titre_fleche"><img src="{{ asset('bundles/website/images/fleche-droite-400x400.png') }}" alt="flèche" /><h3>Atelier : comment gérer la colère ?</h3></div>
+
+                <p><strong>SAMEDI 24 JANVIER de 14h à 17h</strong><br />Cet atelier vous aidera à découvrir pourquoi vous vous mettez en colère contre vous-même, contre les autres ou même contre des situations. Vous apprendrez à exprimer vos désirs, vos besoins sans agresivité.</p>
+
+                <p><strong>Adresse : </strong>(<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)<br />1, rue Alauzet 34090 MONTPELLIER<br />Quartier Boutonnet (Tram 1 et 4 : arrêt Albert 1er)</p> 
+
+                <p>Renseignements et inscriptions au 06 18 67 44 08 (tarif : 45 €)</p>
+            </article>
+
+            <aside>
+                <img width="130" height="180" src="{{ asset('bundles/website/images/atelier-comment-gerer-la-colere.jpg') }}" alt="Image de l'atelier comment gérer la colère" />
+            </aside>
+        </div>
+
+
+        <!-- Salon harmonie -->
+        <div>
+            <article>
+                <div class="titre_fleche"><img src="{{ asset('bundles/website/images/fleche-droite-400x400.png') }}" alt="flèche" /><h3>SALON HARMONIE à Montpellier</h3></div>
+
+                <p><strong>Du 5 au 7 décembre</strong> au Parc des Expositions de Montpellier !<br />Vous pourrez me trouver au <strong>stand C20</strong> (Hall A6)<br /><br />Rue de la Foire<br />34470 PEROLS<br /><a class="link_gray"  href="http://www.salon-bioharmonies.com" title="http://www.salon-bioharmonies.com" target="_blank">En savoir plus</a></p>   
+            </article>
+
+            <aside>
+                <a href="images/bio-harmonies-2014.jpg"><img width="130" height="180" src="{{ asset('bundles/website/images/bio-harmonies-2014_mini.jpg') }}" alt="Image Salon BioHarmonies 2014" /></a>
+            </aside>
+        </div>
+
+
+        <!-- Atelier : qualité et estime de soi --> 
+        <div>
+            <article>
+                <div class="titre_fleche"><img src="{{ asset('bundles/website/images/fleche-droite-400x400.png') }}" alt="flèche" /><h3>Atelier : qualité et estime de soi</h3></div>
+
+                <p><strong>SAMEDI 27 SEPTEMBRE de 14h à 17h</strong><br />Quelle image avons-nous de nous-mêmes ? Celle-ci étant directement reliée à l'estime de soi, nous pourrons renforcer cette vision de nous-mêmes en retrouvant notre valeur intérieure et toutes les belles qualités qui nous habitent.</p>
+
+                <p><strong>Adresse : </strong>(<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)<br />1, rue Alauzet 34090 MONTPELLIER<br />Quartier Boutonnet (Tram 1 et 4 : arrêt Albert 1er)</p> 
+
+                <p>Renseignements et inscriptions au 06 18 67 44 08 (tarif : 45 €)</p>
+            </article>
+
+            <aside>
+                <img width="130" height="180" src="{{ asset('bundles/website/images/atelier-qualite-et-estime-de-soi.jpg') }}" alt="Image de l'atelier qualité et estime de soi" />
+            </aside>
+
+        </div>
+
+    </section>
+
+{% endblock %}

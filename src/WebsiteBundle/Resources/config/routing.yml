@@ -1,0 +1,27 @@
+website_homepage:
+    path:     /
+    defaults: { _controller: WebsiteBundle:Default:index }
+    
+website_access_bar:
+    path:     /access_bar
+    defaults: { _controller: WebsiteBundle:Default:access_bar }
+    
+website_relation_aide:
+    path:     /relation_aide
+    defaults: { _controller: WebsiteBundle:Default:relation_aide }
+    
+website_sophrologie:
+    path:     /sophrologie
+    defaults: { _controller: WebsiteBundle:Default:sophrologie }
+    
+website_mon_approche:
+    path:     /mon_approche
+    defaults: { _controller: WebsiteBundle:Default:mon_approche }
+    
+website_contact:
+    path:     /contact
+    defaults: { _controller: WebsiteBundle:Default:contact }
+    
+website_events_old:
+    path:     /events_old
+    defaults: { _controller: WebsiteBundle:Default:events_old }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        
+        <title>{% block title %}Simone LALANDE{% endblock %}</title>
+        
+        <meta name="description" content="{% block description %}{% endblock %}">
+                
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/website/css/main.css') }}" type="text/css">
+        {% endblock %}
+        
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-22535969-2', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </head>
+    
+    <body>
+      
+        <header></header>
+	  
+        <!-- Barre de navigation -->
+        <nav>	                 
+            <a {% block accueil %}{% endblock %} href="{{ path('website_homepage') }}">Accueil</a>
+            
+            <!-- Extension pour petits écrans -->
+            <select name="Menu" onchange="location = this.value;">
+                <option>Menu</option>
+                <option value="{{ path('website_access_bar') }}">Access Bars®</option>
+                <option value="{{ path('website_relation_aide') }}">Relation d'aide</option>
+                <option value="{{ path('website_sophrologie') }}">Sophrologie</option>
+                <option value="{{ path('website_mon_approche') }}">Mon approche</option>
+            </select>
+            
+            <a {% block access_bar %}{% endblock %} href="{{ path('website_access_bar') }}">Access Bars<sup style="font-size: 0.6em;">®</sup></a>
+            <a {% block relation_aide %}{% endblock %} href="{{ path('website_relation_aide') }}">Relation d'aide</a>		 
+            <a {% block sophrologie %}{% endblock %} href="{{ path('website_sophrologie') }}">Sophrologie</a>
+            <a {% block mon_approche %}{% endblock %} href="{{ path('website_mon_approche') }}">Mon approche</a> 
+            <a {% block contact %}{% endblock %} href="{{ path('website_contact') }}">Contact</a>         
+        </nav>
+        
+        
+        
+
+
+        <div id="content">
+            
+            <div id="contact">
+                <p>Téléphone : <strong>06 18 67 44 08</strong> | <a href="mailto:simone.lalande1@gmail.com">simone.lalande1@gmail.com</a></p>
+            </div>
+            
+            {% block body %}
+            {% endblock %}
+            
+            
+ 
+            <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Pied de page  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+            <footer>
+                
+                <div id="footer_top">
+                    <div class="center">
+                            <img height="80" width="160" src="{{ asset('bundles/website/images/logo_mini.jpg') }}" alt="Logo Simone Lalande" />
+                            <p style="font-family: serif; color: orange; margin-top:5px;"><strong>Simone LALANDE</strong></p>
+                    </div>
+
+                    <div id="facebook">
+                        <p style="margin-right: 4px">Rejoignez moi sur Facebook : </p>
+                        <a href="https://www.facebook.com/simonelalandesophrologue" target="_blank"><img height="30" width="30" src="{{ asset('bundles/website/images/facebook.jpg') }}" alt="Lien Facebook" /></a>
+                    </div>
+                </div>
+                    
+                <div id="footer_bottom">
+                    <div>
+                        <h5>Mes coordonnées</h5>
+                        <p>Téléphone : <strong>06 18 67 44 08</strong><br />Email : simone.lalande1@gmail.com</p>
+                        <p><a href="{{ path('website_contact') }}#page_contact">Cliquez ici pour accéder à la page de contact</a></p>
+                    </div>
+                    <div>
+                        <h6>Séances individuelles à mon cabinet : <br /><span style="font-weight:normal">(Uniquement sur rendez-vous)</span></h6>
+                        <p>1, rue Alauzet 34090 MONTPELLIER<br />Quartier Boutonnet (Tram 1 et 4 : arrêt Albert 1er)</p> 
+                    </div>
+
+                </div>
+            </footer>
+                
+            									   		      
+        </div>	  
+    
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>
