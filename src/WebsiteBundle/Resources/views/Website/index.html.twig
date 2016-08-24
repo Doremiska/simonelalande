@@ -1,0 +1,132 @@
+{% extends "::layout.html.twig" %}
+
+
+
+{% block title %}{{ parent() }} - Access Bars, Relation d'Aide et Sophrologie{% endblock %}
+
+{% block description %}Séances individuelles d'Access Bars, de Relation d'Aide et de Sophrologie à Montpellier. Simone LALANDE - Tél : 06 18 67 44 08, Adresse : 1 rue Alauzet 34090 MONTPELLIER.{% endblock %}
+
+{% block accueil %}style="background-color: rgb(253,172,83); color: rgb(128,51,0);"{% endblock %}
+
+
+
+{% block body %}
+   
+    <div id="main_title">
+        <figure>
+            <a href="{{ asset('bundles/website/images/simone-lalande.jpg') }}"><img width="180" height="180" src="{{ asset('bundles/website/images/simone-lalande_mini.jpg') }}" alt="Simone Lalande" /></a>
+            <figcaption>Simone LALANDE</figcaption>
+        </figure>
+
+        <h1>Access Bars<sup style="font-size: 0.5em;">®</sup> - Relation d'aide - Sophrologie<br />~<br />Montpellier</h1> 
+    </div>
+
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section Bienvenue  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <div>
+        <p>Vous êtes à la recherche d'un bien-être physique, émotionnel et mental ? Vous désirez vous épanouir et évoluer sereinement dans votre vie personnelle et professionnelle ?</p>
+
+        <p>Je vous propose des séances d'<strong><a class="link_colored" href="{{ path('website_access_bar') }}">Access Bars<sup style="font-size: 0.6em;">®</sup></a></strong>, de <strong><a class="link_colored" href="{{ path('website_sophrologie') }}">Sophrologie</a></strong> et de <strong><a class="link_colored" href="{{ path('website_relation_aide') }}">Relation d'aide</a></strong>, pour vous accompagner sur ce chemin au cœur de soi, pour révéler la richesse de vos ressources, vos talents et redécouvrir votre pouvoir de créer.</p>
+
+        <p><strong><a class="link_colored" href="{{ path('website_mon_approche') }}">Sophrologue diplômée</a></strong> depuis plus de 20 ans, formée à la Relation d'aide par l'école E.T.C. de Lise BOURBEAU et au processus Access Consciousness Bars de Gary Douglas et Dain Heer.</p>      
+    </div>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section Mes Séances  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <section id="seances">
+        <h2>Mes séances</h2>
+
+        <div>
+            <aside>
+                <img width="200" height="250" src="{{ asset('bundles/website/images/seances-individuelles.JPG') }}" alt="Image de séance en individuel" />
+            </aside>
+
+            <article>
+                <h3>Séances individuelles sur rendez-vous</h3>
+                <h4>(Access Bars<sup style="font-size: 0.5em;">®</sup>, Relation d'aide ou Sophrologie)</h4>
+                <p>Durée moyenne d'une séance : 1 heure</p>
+
+                <p>Lieu : 1 rue Alauzet 34090 MONTPELLIER (<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)</p>
+
+                <p>Renseignements et rendez-vous au : 06 18 67 44 08</p>              
+            </article> 
+        </div>
+
+    </section>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section Mon cabinet  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section>
+        <h2>Mon cabinet</h2>
+        <div id="mon_cabinet">
+            <figure>
+                <a class="medium" href="{{ asset('bundles/website/images/cabinet_1.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_1_medium.jpg') }}" alt="Image de la table de relaxation" /></a>
+                <a class="mini" href="{{ asset('bundles/website/images/cabinet_1.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_1_mini.jpg') }}" alt="Image de la table de relaxation" /></a>
+                <figcaption>Table de relaxation</figcaption>
+            </figure>
+            <figure>
+                <a class="medium" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_medium.jpg') }}" alt="Image dune séance d'Acces Bar" /></a>
+                <a class="mini" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_mini.jpg') }}" alt="Image dune séance d'Acces Bar" /></a>
+                <figcaption>Séance Acces Bar</figcaption>
+            </figure>
+            <figure>
+                <a class="medium" href="{{ asset('bundles/website/images/cabinet_3.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_3_medium.jpg') }}" alt="Image dun temps de dialogue" /></a>
+                <a class="mini" href="{{ asset('bundles/website/images/cabinet_3.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_3_mini.jpg') }}" alt="Image dun temps de dialogue" /></a>
+                <figcaption>Temps de dialogue</figcaption>
+            </figure>
+            <figure>
+                <a class="medium" href="{{ asset('bundles/website/images/cabinet_4.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_4_medium.jpg') }}" alt="Image de la salle d'attente" /></a>
+                <a class="mini" href="{{ asset('bundles/website/images/cabinet_4.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_4_mini.jpg') }}" alt="Image de la salle d'attente" /></a>
+                <figcaption>Salle d'attente</figcaption>
+            </figure>      
+        </div>    
+    </section>
+
+
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section Actualités  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <section id="actualites">
+        <h2>
+            Actualités - 
+            {% if date|date('m') < 07 %}
+                {{ date|date_modify("-1 year")|date('Y') }}/{{ date|date('Y') }}
+            {% else %}
+                {{ date|date('Y') }}/{{ date|date_modify("+1 year")|date("Y") }}
+            {% endif %}
+        </h2>
+
+        <p class="underline">À venir :</p>
+        
+        {% for advert in listAdverts %}
+            {% if advert.dateEnd is not null %}
+                {% if advert.dateEnd|date('d/m/Y') >= date|date('d/m/Y') %}
+                    {{ include("WebsiteBundle:Website:advert.html.twig") }}
+                {% endif %}
+            {% else %}
+                {% if advert.dateStart|date('d/m/Y') >= date|date('d/m/Y') %}
+                    {{ include("WebsiteBundle:Website:advert.html.twig") }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        <p class="underline">Passés :</p>
+        
+        {% for advert in listAdverts %}
+            {% if advert.dateEnd is not null %}
+                {% if advert.dateEnd|date('d/m/Y') < date|date('d/m/Y') %}
+                    {{ include("WebsiteBundle:Website:advert.html.twig") }}
+                {% endif %}
+            {% else %}
+                {% if advert.dateStart|date('d/m/Y') < date|date('d/m/Y') %}
+                    {{ include("WebsiteBundle:Website:advert.html.twig") }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        <p><a id="events" href="{{ path('website_events_old') }}">Lien vers les évènements plus anciens</a></p>
+
+    </section>
+    
+{% endblock %}

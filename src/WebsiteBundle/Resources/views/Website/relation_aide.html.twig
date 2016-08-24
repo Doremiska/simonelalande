@@ -1,0 +1,56 @@
+{% extends "WebsiteBundle::layout.html.twig" %}
+
+
+
+{% block website_title %}Relation d'Aide{% endblock %}
+
+{% block website_description %}de Relation d'Aide{% endblock %}
+
+{% block relation_aide %}style="background-color: rgb(253,172,83); color: rgb(128,51,0);"{% endblock %}
+
+
+{% block website_h1 %}Relation d'aide{% endblock %}
+
+{% block website_body %}
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Introduction  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <div id="introduction">
+        <aside>
+            <img width="200" height="240" src="{{ asset('bundles/website/images/relation-aide.png') }}" alt="Image de relation d'aide" />
+        </aside>
+
+        <div>
+            <p>La <strong>Relation d'Aide</strong> est un accompagnement pour vous aider à devenir <strong></strong>conscient de ce qui se passe à l'intérieur de vous-même, en apprenant à être à l'<strong>écoute des besoins</strong> de vos corps mental, émotionnel et physique, afin de vous accueillir et être en harmonie avec vous-même</p>  
+
+            <p>Une démarche qui vous aide à identifier les causes de vos difficultés relationnelles afin d'être en <strong>harmonie</strong> avec les autres.</p>
+
+            <p><br /></p>
+
+            <p><strong>Pour en savoir plus sur les séances que je propose <a href="{{ path('website_homepage') }}#seances"><em>cliquez ici !</em></a></strong></p>
+        </div>          
+    </div>
+    
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <section>
+        <h2>Utilisation de la Relation d'Aide</h2>
+
+        <p>La <strong>Relation d'Aide</strong> peut être employée efficacement pour :</p>
+        <ul>
+            <li>Renforcement de l'estime de soi</li>
+            <li>Changements dans la vie</li>
+            <li>Gestion des émotions</li>
+            <li>Se libérer des dépendances</li>
+            <li>Difficultés relationnelles</li>
+            <li>Anxiété</li>
+            <li>Dépression</li>
+            <li>Insomnie</li>
+            <li>Accompagnement aux étapes de deuil</li>
+            <li>Répétition d'événements</li>
+            <li>Optimisation de son chemin de vie</li>           
+        </ul>
+
+        <p>Mieux se connaître pour mieux s'accepter dans le respect de soi-même et des autres, pour retrouver la paix du cœur et de l'âme, le goût d'être soi-même dans la pleine reconnaissance de vos forces et de vos talents.</p>
+
+        <p>Vous souhaitez en savoir plus sur la Relation d’Aide et ses outils, contactez-moi directement en <a href="{{ path('website_contact') }}#page_contact"><em>cliquant ici !</em></a></p>
+    </section>   
+{% endblock %}
+    

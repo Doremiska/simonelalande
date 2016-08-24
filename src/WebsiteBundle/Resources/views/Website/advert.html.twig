@@ -1,0 +1,69 @@
+<div>
+    <article>
+        <!-- Titre de l'annonce -->
+        <div class="titre_fleche">
+            <img src="{{ asset('bundles/website/images/fleche-droite-400x400.png') }}" alt="Flèche droite" />
+            <h3>{{ advert.title }}</h3>
+        </div>
+
+        <!-- Date de l'annonce -->
+        <p>
+            <strong>
+                {% if advert.dateEnd is null %}
+                    {{ advert.dateStart|localizeddate('full', 'none')|upper }}
+                {% else %}
+                    DU {{ advert.dateStart|date('j') }} AU {{ advert.dateEnd|localizeddate('long', 'none')|upper }}
+                {% endif %}
+
+                {% if advert.timeStart is not null %} 
+                    de {{ advert.timeStart|date('H') }}h à {{ advert.timeEnd|date('H') }}h
+                {% endif %}
+            </strong>
+
+            {% if advert.dateComplement is not null %}
+                {{ advert.dateComplement }}
+            {% endif %}
+
+            <br />
+
+            {{ advert.content }}
+        </p>
+
+        <!-- Adresse de l'annonce -->
+        <p>
+            <strong>Adresse : </strong>
+
+            {% if advert.isAtWork %}
+                (<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)
+                <br />
+                1, rue Alauzet 34090 MONTPELLIER
+                <br />
+                Quartier Boutonnet (Tram 1 et 4 : arrêt Albert 1er)
+            {% else %}
+                <br>
+                {{ advert.address.address }}
+                {% if advert.address.addressComplement is not null %}
+                    <br>
+                    {{ advert.address.addressComplement }}
+                {% endif %}
+                <br>
+                {{ advert.address.postalCode }} {{ advert.address.city|upper }}
+                {% if advert.link is not null %}
+                    <br>
+                    <a class="link_gray"  href="{{ advert.link }}" title="{{ advert.link }}" target="_blank">En savoir plus</a>
+                {% endif %}
+            {% endif %} 
+        </p>
+
+        {% if advert.phoneNumber is not null %}
+            <p>Renseignements et inscriptions au {{ advert.phoneNumber }} {% if advert.tariff is not null %}(tarif : {{ advert.tariff }} €){% endif %}</p>
+        {% endif %}   
+
+    </article>
+
+    {% if advert.image is not null %}
+        <aside>
+            <img width="130" height="180" src="{{ advert.image.url }}" alt="{{ advert.image.alt }}" />
+        </aside>
+    {% endif %}
+</div>
