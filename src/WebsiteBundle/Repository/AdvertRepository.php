@@ -26,7 +26,8 @@ class AdvertRepository extends EntityRepository
             ->getQuery()
         ;
         
-        return $query->getResult();
+        // On retourn seulement la query car on va paginer dans le controlleur
+        return $query;
     }
     
     public function getAdvertsBefore(\Datetime $date) 

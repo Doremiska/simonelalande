@@ -15,7 +15,7 @@
     <section id="actualites">
         {% set currentYear = null %}
         {% for advert in listAdverts %}
-            <!-- On définit un variable year afin d'afficher le titre h2 seulement une fois pour toutes les annonces d'une année en cours -->
+            {# On définit un variable year afin d'afficher le titre h2 seulement une fois pour toutes les annonces d'une année en cours #}
             {% set advertYear = advert.dateStart|date('Y') %}
             
             {% if advertYear != currentYear %}
@@ -26,5 +26,11 @@
             {{ include("WebsiteBundle:Website:advert.html.twig") }}
         {% endfor %}
     </section>
+    
+    {# Barre de pagination #}
+    <div class="navigation">
+        {{ knp_pagination_render(listAdverts) }}
+    </div>
+    
     
 {% endblock %}
