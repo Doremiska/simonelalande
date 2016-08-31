@@ -58,6 +58,18 @@
         {% if advert.phoneNumber is not null %}
             <p>Renseignements et inscriptions au {{ advert.phoneNumber }} {% if advert.tariff is not null %}(tarif : {{ advert.tariff }} €){% endif %}</p>
         {% endif %}   
+        
+        <p>
+            <a href="" class="btn btn-default">
+                <img src="{{ asset('glyphicon/glyphicons-151-edit.png') }}" alt="glyphicon-plus">
+                Modifier l'annonce
+            </a>
+
+            <a href="" class="btn btn-default">
+                <img src="{{ asset('glyphicon/glyphicons-17-bin.png') }}" alt="glyphicon-plus">
+                Supprimer l'annonce
+            </a>
+        </p>
 
     </article>
 
@@ -66,4 +78,5 @@
             <img width="130" height="180" src="{{ advert.image.url }}" alt="{{ advert.image.alt }}" />
         </aside>
     {% endif %}
+    
 </div>
