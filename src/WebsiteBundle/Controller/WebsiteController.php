@@ -12,6 +12,7 @@ class WebsiteController extends Controller
     {
         // On passe la date d'ajourd'hui en paramètre pour l'affichage de l'année en cours
         $date = new \Datetime();
+        $date->modify('-1day');
         
         // On crée une dexuième date avec de décalage de 6 mois pour récupérer seulement les annonces des 6 derniers mois pour la page d'accueil
         $dateLimit = new \Datetime();

@@ -105,16 +105,15 @@
             </a>
         </p>
         
-
         <p class="underline">À venir :</p>
         
         {% for advert in listAdverts %}
             {% if advert.dateEnd is not null %}
-                {% if advert.dateEnd|date('d/m/Y') >= date|date('d/m/Y') %}
+                {% if advert.dateEnd >= date %}
                     {{ include("WebsiteBundle:Website:advert.html.twig") }}
                 {% endif %}
             {% else %}
-                {% if advert.dateStart|date('d/m/Y') >= date|date('d/m/Y') %}
+                {% if advert.dateStart >= date %}
                     {{ include("WebsiteBundle:Website:advert.html.twig") }}
                 {% endif %}
             {% endif %}
@@ -124,11 +123,11 @@
         
         {% for advert in listAdverts %}
             {% if advert.dateEnd is not null %}
-                {% if advert.dateEnd|date('d/m/Y') < date|date('d/m/Y') %}
+                {% if advert.dateEnd < date %}
                     {{ include("WebsiteBundle:Website:advert.html.twig") }}
                 {% endif %}
             {% else %}
-                {% if advert.dateStart|date('d/m/Y') < date|date('d/m/Y') %}
+                {% if advert.dateStart < date %}
                     {{ include("WebsiteBundle:Website:advert.html.twig") }}
                 {% endif %}
             {% endif %}

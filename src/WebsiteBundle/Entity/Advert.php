@@ -108,8 +108,14 @@ class Advert
      */
     private $address;
     
-
-
+    
+    
+    public function __construct() 
+    {
+        $this->dateStart = new \Datetime();
+    }
+    
+    
     /**
      * Get id
      *
