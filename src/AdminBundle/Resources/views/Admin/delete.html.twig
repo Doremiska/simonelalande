@@ -1,0 +1,30 @@
+{% extends "AdminBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Supprimer une annonce{% endblock %}
+
+{% block body_admin %}
+   
+   <h2>Supprimer une annonce</h2>
+   
+   <p>
+        Voulez-vous vraiment supprimer l'annonce : {{ advert.title }} ?
+   </p>
+   
+   <br>
+   
+   {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+    <form action="{{ path('admin_delete', {'id': advert.id}) }}" method="post">
+        <div class="center">
+           <a href="{{ path('website_homepage') }}#actualites" class="btn btn-default">
+                <img src="{{ asset('glyphicon/glyphicons-225-chevron-left.png') }}" alt="chevron-left">
+                Retour 
+            </a>
+
+            <input type="submit" value="Supprimer" class="btn btn-danger">
+        </div>
+         
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+   
+{% endblock %}

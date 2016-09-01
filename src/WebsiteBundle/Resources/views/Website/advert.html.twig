@@ -31,15 +31,15 @@
 
         <!-- Adresse de l'annonce -->
         <p>
-            <strong>Adresse : </strong>
-
             {% if advert.isAtWork %}
+                <strong>Adresse : </strong>
                 (<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)
                 <br />
                 1, rue Alauzet 34090 MONTPELLIER
                 <br />
                 Quartier Boutonnet (Tram 1 et 4 : arrêt Albert 1er)
-            {% else %}
+            {% elseif advert.address is not null %}
+                <strong>Adresse : </strong>
                 <br>
                 {{ advert.address.address }}
                 {% if advert.address.addressComplement is not null %}
@@ -48,11 +48,11 @@
                 {% endif %}
                 <br>
                 {{ advert.address.postalCode }} {{ advert.address.city|upper }}
-                {% if advert.link is not null %}
-                    <br>
-                    <a class="link_gray"  href="{{ advert.link }}" title="{{ advert.link }}" target="_blank">En savoir plus</a>
-                {% endif %}
             {% endif %} 
+            {% if advert.link is not null %}
+                <br>
+                <a class="link_gray"  href="{{ advert.link }}" title="{{ advert.link }}" target="_blank">En savoir plus</a>
+            {% endif %}
         </p>
 
         {% if advert.phoneNumber is not null %}
@@ -60,13 +60,13 @@
         {% endif %}   
         
         <p>
-            <a href="" class="btn btn-default">
-                <img src="{{ asset('glyphicon/glyphicons-151-edit.png') }}" alt="glyphicon-plus">
+            <a href="{{ path('admin_edit', {'id': advert.id}) }}" class="btn btn-default">
+                <img src="{{ asset('glyphicon/glyphicons-151-edit.png') }}" alt="glyphicon-edit">
                 Modifier l'annonce
             </a>
 
-            <a href="" class="btn btn-default">
-                <img src="{{ asset('glyphicon/glyphicons-17-bin.png') }}" alt="glyphicon-plus">
+            <a href="{{ path('admin_delete', {'id': advert.id}) }}" class="btn btn-default">
+                <img src="{{ asset('glyphicon/glyphicons-17-bin.png') }}" alt="glyphicon-bin">
                 Supprimer l'annonce
             </a>
         </p>

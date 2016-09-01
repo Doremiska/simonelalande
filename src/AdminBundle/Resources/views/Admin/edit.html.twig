@@ -1,0 +1,11 @@
+{% extends "AdminBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Éditer une annonce{% endblock %}
+
+{% block body_admin %}
+   
+   <h2>Éditer une annonce</h2>
+   
+   {{ include("AdminBundle:Admin:form.html.twig") }}
+   
+{% endblock %}

@@ -66,9 +66,9 @@
                 <figcaption>Table de relaxation</figcaption>
             </figure>
             <figure>
-                <a class="medium" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_medium.jpg') }}" alt="Image dune séance d'Acces Bar" /></a>
-                <a class="mini" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_mini.jpg') }}" alt="Image dune séance d'Acces Bar" /></a>
-                <figcaption>Séance Acces Bar</figcaption>
+                <a class="medium" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_medium.jpg') }}" alt="Image dune séance d'Access Bar" /></a>
+                <a class="mini" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_mini.jpg') }}" alt="Image dune séance d'Access Bar" /></a>
+                <figcaption>Séance Access Bar</figcaption>
             </figure>
             <figure>
                 <a class="medium" href="{{ asset('bundles/website/images/cabinet_3.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_3_medium.jpg') }}" alt="Image dun temps de dialogue" /></a>
@@ -97,9 +97,12 @@
             {% endif %}
         </h2>
         
-       
+        {% for message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">Message flash : {{ message }}</div>
+        {% endfor %}
+        
         <p>
-            <a href="" class="btn btn-default">
+            <a href="{{ path('admin_add') }}" class="btn btn-default">
                 <img src="{{ asset('glyphicon/glyphicons-191-plus-sign.png') }}" alt="glyphicon-plus">
                 Ajouter une annonce
             </a>
