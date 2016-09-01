@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new WebsiteBundle\WebsiteBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new AdminBundle\AdminBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

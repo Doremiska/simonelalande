@@ -3,12 +3,15 @@
 namespace WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Image
  *
  * @ORM\Table(name="image")
  * @ORM\Entity(repositoryClass="WebsiteBundle\Repository\ImageRepository")
+ * @Vich\Uploadable
  */
 class Image
 {
@@ -20,26 +23,27 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
+    
+     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="advert_image", fileNameProperty="imageName")
+     * 
+     * @var File
      */
-    private $url;
-
+    private $imageFile;
+    
     /**
-     * @var string
+     * @ORM\Column(type="string", length=255)
      *
-     * @ORM\Column(name="alt", type="string", length=255)
+     * @var string
      */
-    private $alt;
-
-
+    private $imageName;
+    
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -47,51 +51,34 @@ class Image
     }
 
     /**
-     * Set url
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+    
+    /**
+     * Set imageName
      *
-     * @param string $url
+     * @param string $imageName
      *
      * @return Image
      */
-    public function setUrl($url)
+    public function setImageName($imageName)
     {
-        $this->url = $url;
+        $this->imageName = $imageName;
 
         return $this;
     }
 
     /**
-     * Get url
+     * Get imageName
      *
      * @return string
      */
-    public function getUrl()
+    public function getImageName()
     {
-        return $this->url;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return Image
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
+        return $this->imageName;
     }
 }
-
