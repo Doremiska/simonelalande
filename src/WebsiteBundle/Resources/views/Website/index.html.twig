@@ -27,7 +27,7 @@
     <div>
         <p>Vous êtes à la recherche d'un bien-être physique, émotionnel et mental ? Vous désirez vous épanouir et évoluer sereinement dans votre vie personnelle et professionnelle ?</p>
 
-        <p>Je vous propose des séances d'<strong><a class="link_colored" href="{{ path('website_access_bar') }}">Access Bars<sup style="font-size: 0.6em;">®</sup></a></strong>, de <strong><a class="link_colored" href="{{ path('website_sophrologie') }}">Sophrologie</a></strong> et de <strong><a class="link_colored" href="{{ path('website_relation_aide') }}">Relation d'aide</a></strong>, pour vous accompagner sur ce chemin au cœur de soi, pour révéler la richesse de vos ressources, vos talents et redécouvrir votre pouvoir de créer.</p>
+        <p>Je vous propose des séances d'<strong><a class="link_colored" href="{{ path('website_access_bars') }}">Access Bars<sup style="font-size: 0.6em;">®</sup></a></strong>, de <strong><a class="link_colored" href="{{ path('website_sophrologie') }}">Sophrologie</a></strong> et de <strong><a class="link_colored" href="{{ path('website_relation_aide') }}">Relation d'aide</a></strong>, pour vous accompagner sur ce chemin au cœur de soi, pour révéler la richesse de vos ressources, vos talents et redécouvrir votre pouvoir de créer.</p>
 
         <p><strong><a class="link_colored" href="{{ path('website_mon_approche') }}">Sophrologue diplômée</a></strong> depuis plus de 20 ans, formée à la Relation d'aide par l'école E.T.C. de Lise BOURBEAU et au processus Access Consciousness Bars de Gary Douglas et Dain Heer.</p>      
     </div>
@@ -49,7 +49,7 @@
 
                 <p>Lieu : 1 rue Alauzet 34090 MONTPELLIER (<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)</p>
 
-                <p>Renseignements et rendez-vous au : 06 18 67 44 08</p>              
+                <p>Renseignements et rendez-vous au : <span class="nowrap">06 18 67 44 08</span></p>              
             </article> 
         </div>
 
@@ -66,9 +66,9 @@
                 <figcaption>Table de relaxation</figcaption>
             </figure>
             <figure>
-                <a class="medium" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_medium.jpg') }}" alt="Image dune séance d'Access Bar" /></a>
-                <a class="mini" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_mini.jpg') }}" alt="Image dune séance d'Access Bar" /></a>
-                <figcaption>Séance Access Bar</figcaption>
+                <a class="medium" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_medium.jpg') }}" alt="Image dune séance d'Access Bars" /></a>
+                <a class="mini" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_mini.jpg') }}" alt="Image dune séance d'Access Bars" /></a>
+                <figcaption>Séance Access Bars</figcaption>
             </figure>
             <figure>
                 <a class="medium" href="{{ asset('bundles/website/images/cabinet_3.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_3_medium.jpg') }}" alt="Image dun temps de dialogue" /></a>
@@ -98,7 +98,7 @@
         </h2>
         
         {% for message in app.session.flashbag.get('notice') %}
-            <div class="alert alert-success">Message flash : {{ message }}</div>
+            <div class="alert alert-success fade in">Message flash : {{ message }}</div>
         {% endfor %}
         
         <p>

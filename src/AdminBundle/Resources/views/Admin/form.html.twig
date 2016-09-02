@@ -16,6 +16,18 @@
     
     <br>
     
+    {# Date à venir #}
+    <div class="form-group">
+        <div class="form-label">
+            {{ form_label(form.toComeUp, "Date à venir") }}
+            {{ form_errors(form.toComeUp) }}
+        </div>
+        
+        <div class="form-field" style="margin-top:5px;">
+            {{ form_widget(form.toComeUp) }}
+        </div>
+    </div>
+    
     {# Date de début #}
     <div class="form-group">
         <div class="form-label bold">
@@ -102,6 +114,18 @@
         </div>
     </div>
     
+    {# Tarif #}
+    <div class="form-group">
+        <div class="form-label">
+            {{ form_label(form.tariff, "Prix (€)") }}
+            {{ form_errors(form.tariff) }}
+        </div>
+        
+        <div class="form-field" style="width:50px;">
+            {{ form_widget(form.tariff, {'attr': {'class': 'form-widget'}}) }}
+        </div>
+    </div>
+    
     {# Téléphone #}
     <div class="form-group">
         <div class="form-label bold">
@@ -111,18 +135,6 @@
         
         <div class="form-field" style="width:150px;">
             {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-widget'}}) }}
-        </div>
-    </div>
-    
-    {# Tarif #}
-    <div class="form-group">
-        <div class="form-label">
-            {{ form_label(form.tariff, "Tarif (€)") }}
-            {{ form_errors(form.tariff) }}
-        </div>
-        
-        <div class="form-field" style="width:50px;">
-            {{ form_widget(form.tariff, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
     
@@ -186,12 +198,24 @@
     <br>
     
     {# Image #}
-    
+    <div class="form-group">
+        <div class="form-label bold">
+            {{ form_label(form.image.file, "Image") }}
+            {{ form_errors(form.image.file) }}
+        </div>
+        
+        <div class="form-field">
+            {{ form_widget(form.image.file) }}
+        </div>
+    </div>
     
     <br>
     
     {# Sauvegarder #}
     <div class="center">
+        <a href="{{ path('website_homepage') }}#actualites" class="btn-cancel">
+            Annuler
+        </a>
         {{ form_widget(form.save, {'attr': {'class': 'btn-submit'}, 'label': 'Envoyer'}) }}
     </div>
     

@@ -225,6 +225,10 @@ a:hover {
     font-weight: bold;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 
 
 /* Images */
@@ -788,7 +792,7 @@ h6 {
 }
 
 .alert-success {
-    color: #ff934b;
-    background-color: #ffece0;
-    border-color: #ffd7bb;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
 }

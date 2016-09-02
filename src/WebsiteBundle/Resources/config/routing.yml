@@ -2,9 +2,9 @@ website_homepage:
     path:     /
     defaults: { _controller: WebsiteBundle:Website:index }
     
-website_access_bar:
-    path:     /access_bar
-    defaults: { _controller: WebsiteBundle:Website:access_bar }
+website_access_bars:
+    path:     /access_bars
+    defaults: { _controller: WebsiteBundle:Website:access_bars }
     
 website_relation_aide:
     path:     /relation_aide

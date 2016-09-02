@@ -87,8 +87,37 @@
     background-color: #408ccb;
     color: #ffffff;
     font-size: 1em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .btn-submit:hover {
     background-color: #2e72a9;
+}
+
+.btn-cancel {
+    display: inline-block;
+    padding: 9px 17px 9px 17px;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    font-size: 1em;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    color: rgb(74, 74, 74);
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.btn-cancel:hover {
+    text-decoration: none;
+    background-color: #e8e8e8;
 }

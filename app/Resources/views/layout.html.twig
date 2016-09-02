@@ -35,13 +35,13 @@
             <!-- Extension pour petits écrans -->
             <select name="Menu" onchange="location = this.value;">
                 <option>Menu</option>
-                <option value="{{ path('website_access_bar') }}">Access Bars®</option>
+                <option value="{{ path('website_access_bars') }}">Access Bars®</option>
                 <option value="{{ path('website_relation_aide') }}">Relation d'aide</option>
                 <option value="{{ path('website_sophrologie') }}">Sophrologie</option>
                 <option value="{{ path('website_mon_approche') }}">Mon approche</option>
             </select>
             
-            <a {% block access_bar %}{% endblock %} href="{{ path('website_access_bar') }}">Access Bars<sup style="font-size: 0.6em;">®</sup></a>
+            <a {% block access_bars %}{% endblock %} href="{{ path('website_access_bars') }}">Access Bars<sup style="font-size: 0.6em;">®</sup></a>
             <a {% block relation_aide %}{% endblock %} href="{{ path('website_relation_aide') }}">Relation d'aide</a>		 
             <a {% block sophrologie %}{% endblock %} href="{{ path('website_sophrologie') }}">Sophrologie</a>
             <a {% block mon_approche %}{% endblock %} href="{{ path('website_mon_approche') }}">Mon approche</a> 

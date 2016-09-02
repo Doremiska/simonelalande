@@ -5,7 +5,7 @@ namespace AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use AdminBundle\Form\AdvertType;
+use WebsiteBundle\Form\AdvertType;
 use WebsiteBundle\Entity\Advert;
 
 class AdminController extends Controller

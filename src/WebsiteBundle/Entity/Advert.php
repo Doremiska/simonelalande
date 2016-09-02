@@ -29,6 +29,13 @@ class Advert
     private $title;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="to_come_up", type="boolean")
+     */
+    private $toComeUp;
+    
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_start", type="date")
@@ -99,12 +106,12 @@ class Advert
     private $tariff;
     
     /**
-     * @ORM\ManyToOne(targetEntity="WebsiteBundle\Entity\Image", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="WebsiteBundle\Entity\Image", cascade={"persist", "remove"})
      */
     private $image;
     
     /**
-     * @ORM\ManyToOne(targetEntity="WebsiteBundle\Entity\Address", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="WebsiteBundle\Entity\Address", cascade={"persist", "remove"})
      */
     private $address;
     
@@ -436,5 +443,29 @@ class Advert
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Set toComeUp
+     *
+     * @param boolean $toComeUp
+     *
+     * @return Advert
+     */
+    public function setToComeUp($toComeUp)
+    {
+        $this->toComeUp = $toComeUp;
+
+        return $this;
+    }
+
+    /**
+     * Get toComeUp
+     *
+     * @return boolean
+     */
+    public function getToComeUp()
+    {
+        return $this->toComeUp;
     }
 }

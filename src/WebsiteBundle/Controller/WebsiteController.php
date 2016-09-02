@@ -65,9 +65,9 @@ class WebsiteController extends Controller
         ));
     }
     
-    public function access_barAction()
+    public function access_barsAction()
     {
-        return $this->render('WebsiteBundle:Website:access_bar.html.twig');
+        return $this->render('WebsiteBundle:Website:access_bars.html.twig');
     }
     
     public function relation_aideAction()

@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminBundle\Form;
+namespace WebsiteBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,8 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use AdminBundle\Form\AddressType;
-use AdminBundle\Form\ImageType;
+use WebsiteBundle\Form\AddressType;
+use WebsiteBundle\Form\ImageType;
 
 class AdvertType extends AbstractType
 {
@@ -26,6 +26,7 @@ class AdvertType extends AbstractType
     {
         $builder
             ->add('title',          TextType::class)
+            ->add('toComeUp',       CheckboxType::class, array('required' => false))
             ->add('dateStart',      DateType::class)
             ->add('dateEnd',        DateType::class, array('required' => false))
             ->add('timeStart',      TimeType::class, array('required' => false))
