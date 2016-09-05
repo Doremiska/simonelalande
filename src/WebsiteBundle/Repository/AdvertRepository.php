@@ -13,7 +13,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class AdvertRepository extends EntityRepository
 {
-    public function getAdvertsAfter(\Datetime $date) 
+    public function getAdvertsOld(\Datetime $date) 
     {
         $query = $this->createQueryBuilder('a')
             ->leftJoin('a.image', 'i')
@@ -22,6 +22,7 @@ class AdvertRepository extends EntityRepository
             ->addSelect('ad')
             ->where('a.dateStart < :date')
             ->setParameter('date', $date)
+            ->andWhere('a.toComeUp = 0')
             ->orderBy('a.dateStart', 'DESC')
             ->getQuery()
         ;
@@ -30,19 +31,97 @@ class AdvertRepository extends EntityRepository
         return $query;
     }
     
-    public function getAdvertsBefore(\Datetime $date) 
+    public function getAdvertsPast(\Datetime $dateLimit, \Datetime $today) 
     {
         $query = $this->createQueryBuilder('a')
             ->leftJoin('a.image', 'i')
             ->addSelect('i')
             ->leftJoin('a.address', 'ad')
             ->addSelect('ad')
-            ->where('a.dateStart >= :date')
-            ->setParameter('date', $date)
+            ->where('a.dateEnd < :today OR a.dateEnd IS NULL AND a.dateStart < :today')
+            ->setParameter('today', $today)
+            ->andwhere('a.dateStart >= :date')
+            ->setParameter('date', $dateLimit)
+            ->andWhere('a.toComeUp = 0')
             ->orderBy('a.dateStart', 'DESC')
             ->getQuery()
         ;
         
         return $query->getResult();
     }
+    
+    public function getAdvertsFuture(\Datetime $date) 
+    {
+        $query = $this->createQueryBuilder('a')
+            ->leftJoin('a.image', 'i')
+            ->addSelect('i')
+            ->leftJoin('a.address', 'ad')
+            ->addSelect('ad')
+            ->where('a.dateEnd >= :date')
+            ->orWhere('a.dateStart >= :date')
+            ->setParameter('date', $date)
+            ->andWhere('a.toComeUp = 0')
+            ->orderBy('a.dateStart', 'ASC')
+            ->getQuery()
+        ;
+        
+        return $query->getResult();
+    }
+    
+    public function getAdvertsToComeUp() 
+    {
+        $query = $this->createQueryBuilder('a')
+            ->leftJoin('a.image', 'i')
+            ->addSelect('i')
+            ->leftJoin('a.address', 'ad')
+            ->addSelect('ad')
+            ->where('a.toComeUp = 1')
+            ->orderBy('a.dateStart', 'ASC')
+            ->getQuery()
+        ;
+        
+        return $query->getResult();
+    }
+    
+    public function getAdvertsCategory(\Datetime $date, $category) 
+    {
+        $query = $this->createQueryBuilder('a')
+            ->leftJoin('a.image', 'i')
+            ->addSelect('i')
+            ->leftJoin('a.address', 'ad')
+            ->addSelect('ad')
+            ->leftJoin('a.categories', 'c')
+            ->addSelect('c')
+            ->where('a.dateEnd >= :date')
+            ->orWhere('a.dateStart >= :date')
+            ->setParameter('date', $date)
+            ->andWhere('a.toComeUp = 0')
+            ->andWhere('c.name = :category')
+            ->setParameter('category', $category)
+            ->orderBy('a.dateStart', 'ASC')
+            ->getQuery()
+        ;
+        
+        return $query->getResult();
+    }
+    
+    public function getAdvertsCategoryToComeUp($category) 
+    {
+        $query = $this->createQueryBuilder('a')
+            ->leftJoin('a.image', 'i')
+            ->addSelect('i')
+            ->leftJoin('a.address', 'ad')
+            ->addSelect('ad')
+            ->leftJoin('a.categories', 'c')
+            ->addSelect('c')
+            ->where('a.toComeUp = 1')
+            ->andWhere('c.name = :category')
+            ->setParameter('category', $category)
+            ->orderBy('a.dateStart', 'ASC')
+            ->getQuery()
+        ;
+        
+        return $query->getResult();
+    }
+       
 }

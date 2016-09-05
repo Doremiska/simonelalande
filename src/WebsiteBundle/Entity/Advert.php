@@ -3,6 +3,7 @@
 namespace WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Advert
@@ -115,11 +116,17 @@ class Advert
      */
     private $address;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="WebsiteBundle\Entity\Category", cascade={"persist"})
+     */
+    private $categories;
+    
     
     
     public function __construct() 
     {
         $this->dateStart = new \Datetime();
+        $this->categories = new ArrayCollection();
     }
     
     
@@ -467,5 +474,39 @@ class Advert
     public function getToComeUp()
     {
         return $this->toComeUp;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \WebsiteBundle\Entity\Category $category
+     *
+     * @return Advert
+     */
+    public function addCategory(\WebsiteBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \WebsiteBundle\Entity\Category $category
+     */
+    public function removeCategory(\WebsiteBundle\Entity\Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

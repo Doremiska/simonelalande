@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use WebsiteBundle\Form\AddressType;
 use WebsiteBundle\Form\ImageType;
 
@@ -26,6 +27,12 @@ class AdvertType extends AbstractType
     {
         $builder
             ->add('title',          TextType::class)
+            ->add('categories',     EntityType::class, array(
+                'class' => 'WebsiteBundle:Category',
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true
+            ))
             ->add('toComeUp',       CheckboxType::class, array('required' => false))
             ->add('dateStart',      DateType::class)
             ->add('dateEnd',        DateType::class, array('required' => false))
@@ -35,13 +42,14 @@ class AdvertType extends AbstractType
             ->add('content',        TextareaType::class, array('required' => false))
             ->add('isAtWork',       CheckboxType::class, array('required' => false))
             ->add('link',           UrlType::class, array('required' => false))
-            ->add('phoneNumber',    TextType::class, array('required' => false))
             ->add('tariff',         IntegerType::class, array('required' => false))
+            ->add('phoneNumber',    TextType::class, array('required' => false))
             ->add('image',          ImageType::class, array('required' => false))
             ->add('address',        AddressType::class, array('required' => false))
             ->add('save',           SubmitType::class)
         ;
     }
+    
     
     /**
      * @param OptionsResolver $resolver

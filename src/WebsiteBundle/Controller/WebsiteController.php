@@ -18,15 +18,28 @@ class WebsiteController extends Controller
         $dateLimit = new \Datetime();
         $dateLimit->modify('-6 months');
         
-        // On récupère toutes les annonces datant de moins de 6 mois (incluant celles à venir)
-        $listAdverts = $this->getDoctrine()
+        // On récupère toutes les annonces datant de moins de 6 mois en trois listes (incluant celles à venir)
+        // past, future, toComUp
+        $listAdvertsPast = $this->getDoctrine()
             ->getManager()
             ->getRepository('WebsiteBundle:Advert')
-            ->getAdvertsBefore($dateLimit)
+            ->getAdvertsPast($dateLimit, $date)
+        ;
+        $listAdvertsFuture = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('WebsiteBundle:Advert')
+            ->getAdvertsFuture($date)
+        ;
+        $listAdvertsToComeUp = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('WebsiteBundle:Advert')
+            ->getAdvertsToComeUp()
         ;
         
         return $this->render('WebsiteBundle:Website:index.html.twig', array(
-            'listAdverts' => $listAdverts,
+            'listAdvertsPast' => $listAdvertsPast,
+            'listAdvertsFuture' => $listAdvertsFuture,
+            'listAdvertsToComeUp' => $listAdvertsToComeUp,
             'date' => $date
         ));
     }
@@ -41,7 +54,7 @@ class WebsiteController extends Controller
         $query = $this->getDoctrine()
             ->getManager()
             ->getRepository('WebsiteBundle:Advert')
-            ->getAdvertsAfter($dateLimit)
+            ->getAdvertsOld($dateLimit)
         ;
         
         // On pagine la liste des annonces
@@ -67,17 +80,68 @@ class WebsiteController extends Controller
     
     public function access_barsAction()
     {
-        return $this->render('WebsiteBundle:Website:access_bars.html.twig');
+        $date = new \Datetime();
+        $date->modify('-1day');
+        
+        $listAdverts = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('WebsiteBundle:Advert')
+            ->getAdvertsCategory($date, 'Access Bars')
+        ;
+        $listAdvertsToComeUp = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('WebsiteBundle:Advert')
+            ->getAdvertsCategoryToComeUp('Access Bars')
+        ;
+        
+        return $this->render('WebsiteBundle:Website:access_bars.html.twig', array(
+            'listAdverts' => $listAdverts,
+            'listAdvertsToComeUp' => $listAdvertsToComeUp
+        ));
     }
     
     public function relation_aideAction()
     {
-        return $this->render('WebsiteBundle:Website:relation_aide.html.twig');
+        $date = new \Datetime();
+        $date->modify('-1day');
+        
+        $listAdverts = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('WebsiteBundle:Advert')
+            ->getAdvertsCategory($date, 'Relation d\'Aide')
+        ;
+        $listAdvertsToComeUp = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('WebsiteBundle:Advert')
+            ->getAdvertsCategoryToComeUp('Relation d\'Aide')
+        ;
+        
+        return $this->render('WebsiteBundle:Website:relation_aide.html.twig', array(
+            'listAdverts' => $listAdverts,
+            'listAdvertsToComeUp' => $listAdvertsToComeUp
+        ));
     }
     
     public function sophrologieAction()
     {
-        return $this->render('WebsiteBundle:Website:sophrologie.html.twig');
+        $date = new \Datetime();
+        $date->modify('-1day');
+        
+        $listAdverts = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('WebsiteBundle:Advert')
+            ->getAdvertsCategory($date, 'Sophrologie')
+        ;
+        $listAdvertsToComeUp = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('WebsiteBundle:Advert')
+            ->getAdvertsCategoryToComeUp('Sophrologie')
+        ;
+        
+        return $this->render('WebsiteBundle:Website:sophrologie.html.twig', array(
+            'listAdverts' => $listAdverts,
+            'listAdvertsToComeUp' => $listAdvertsToComeUp
+        ));
     }
     
     public function mon_approcheAction()

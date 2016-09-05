@@ -10,5 +10,21 @@
     <h1>{% block website_h1 %}{% endblock %} - Montpellier</h1> 
        
     {% block website_body %}{% endblock %}
+    
+    {% if listAdverts is not empty or listAdvertsToComeUp is not empty %}
+        <section id="actualites">
+            <h2>Dernières actualités - {% block category %}{% endblock %}</h2>
+            {% for advert in listAdverts %}
+                {{ include("WebsiteBundle:Website:advert.html.twig") }}
+            {% endfor %}
+            {% for advert in listAdvertsToComeUp %}
+                {{ include("WebsiteBundle:Website:advert.html.twig") }}
+            {% endfor %}
+        </section>
+    {% endif %}
+    
+    <p>
+        <a href="{{ path('website_homepage') }}#actualites">Lien vers toutes les actualités</a>
+    </p>
 
 {% endblock %}

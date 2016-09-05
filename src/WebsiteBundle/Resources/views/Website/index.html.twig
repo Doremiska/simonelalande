@@ -110,30 +110,18 @@
         
         <p class="underline">À venir :</p>
         
-        {% for advert in listAdverts %}
-            {% if advert.dateEnd is not null %}
-                {% if advert.dateEnd >= date %}
-                    {{ include("WebsiteBundle:Website:advert.html.twig") }}
-                {% endif %}
-            {% else %}
-                {% if advert.dateStart >= date %}
-                    {{ include("WebsiteBundle:Website:advert.html.twig") }}
-                {% endif %}
-            {% endif %}
+        {% for advert in listAdvertsFuture %}
+            {{ include("WebsiteBundle:Website:advert.html.twig") }}
+        {% endfor %}
+        
+        {% for advert in listAdvertsToComeUp %}
+            {{ include("WebsiteBundle:Website:advert.html.twig") }}
         {% endfor %}
 
         <p class="underline">Passés :</p>
         
-        {% for advert in listAdverts %}
-            {% if advert.dateEnd is not null %}
-                {% if advert.dateEnd < date %}
-                    {{ include("WebsiteBundle:Website:advert.html.twig") }}
-                {% endif %}
-            {% else %}
-                {% if advert.dateStart < date %}
-                    {{ include("WebsiteBundle:Website:advert.html.twig") }}
-                {% endif %}
-            {% endif %}
+        {% for advert in listAdvertsPast %}
+            {{ include("WebsiteBundle:Website:advert.html.twig") }}
         {% endfor %}
 
         <p><a id="events" href="{{ path('website_events_old') }}">Lien vers les évènements plus anciens</a></p>

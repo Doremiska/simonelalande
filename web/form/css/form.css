@@ -55,6 +55,14 @@
     margin-right: 5px;
 }
 
+.form-check-boxes input {
+    margin-right: 5px;
+}
+
+.form-check-boxes label {
+    margin-right: 10px;
+}
+
 .text-area {
     height: 100px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
