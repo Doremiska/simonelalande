@@ -4,6 +4,7 @@ namespace WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -38,7 +39,19 @@ class Image
     private $alt;
     
     
-
+    /**
+     * @Assert\Image(
+            mimeTypesMessage="Ce fichier n'est pas une image.",
+            minWidth=50,
+            maxWidth=1000,
+            minHeight=50,
+            maxHeight=1000,
+            minWidthMessage="La largeur de l'image est trop petite ({{ width }}px). La largeur minimale attendue est de {{ min_width }}px.",
+            maxWidthMessage="La largeur de l'image est trop grande ({{ width }}px). La largeur maximale attendue est de {{ max_width }}px.",
+            minHeightMessage="La hauteur de l'image est trop petite ({{ height }}px). La hauteur minimale attendue est de {{ min_height }}px.",
+            maxHeightMessage="La hauteur de l'image est trop grande ({{ height }}px). La hauteur maximale attendue est de {{ max_height }}px."
+        )
+     */
     private $file;
     private $tempFilename;
 

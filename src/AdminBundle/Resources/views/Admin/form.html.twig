@@ -6,24 +6,22 @@
     <div class="form-group">
         <div class="form-label bold">
             {{ form_label(form.title, "Titre de l'annonce") }}
-            {{ form_errors(form.title) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.title, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.title) }}
     
     <div class="form-group">
         <div class="form-label bold">
             {{ form_label(form.categories, "Catégories") }}
-            {{ form_errors(form.categories) }}
         </div>
-        
         <div class="form-field" style="margin-top:4px;">
             {{ form_widget(form.categories, {'attr': {'class': 'form-check-boxes'}}) }}
         </div>
     </div>
+    {{ form_errors(form.categories) }}
     
     <br>
     
@@ -31,73 +29,67 @@
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.toComeUp, "Date à venir") }}
-            {{ form_errors(form.toComeUp) }}
         </div>
-        
         <div class="form-field" style="margin-top:5px;">
             {{ form_widget(form.toComeUp) }}
         </div>
     </div>
+    {{ form_errors(form.toComeUp) }}
     
     {# Date de début #}
     <div class="form-group">
         <div class="form-label bold">
             {{ form_label(form.dateStart, "Date de début") }}
-            {{ form_errors(form.dateStart) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.dateStart) }}
         </div>
     </div>
+    {{ form_errors(form.dateStart) }}
     
     {# Date de fin #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.dateEnd, "Date de fin") }}
-            {{ form_errors(form.dateEnd) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.dateEnd) }}
         </div>
     </div>
+    {{ form_errors(form.dateEnd) }}
     
     {# Heure de début #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.timeStart, "Heure de début") }}
-            {{ form_errors(form.timeStart) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.timeStart) }}
         </div>
     </div>
+    {{ form_errors(form.timeStart) }}
     
     {# Heure de fin #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.timeEnd, "Heure de fin") }}
-            {{ form_errors(form.timeEnd) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.timeEnd) }}
         </div>
     </div>
+    {{ form_errors(form.timeEnd) }}
     
     {# Complément de date #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.dateComplement, "Complément de date") }}
-            {{ form_errors(form.dateComplement) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.dateComplement, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.dateComplement) }}
     
     <br>
     
@@ -105,49 +97,45 @@
     <div class="form-group">
         <div class="form-label bold">
             {{ form_label(form.content, "Contenu") }}
-            {{ form_errors(form.content) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.content, {'attr': {'class': 'form-widget text-area'}}) }}
         </div>
     </div>
+    {{ form_errors(form.content) }}
     
     {# Lien #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.link, "Lien") }}
-            {{ form_errors(form.link) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.link, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.link) }}
     
     {# Tarif #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.tariff, "Prix (€)") }}
-            {{ form_errors(form.tariff) }}
         </div>
-        
         <div class="form-field" style="width:50px;">
             {{ form_widget(form.tariff, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.tariff) }}
     
     {# Téléphone #}
     <div class="form-group">
         <div class="form-label bold">
             {{ form_label(form.phoneNumber, "Téléphone") }}
-            {{ form_errors(form.phoneNumber) }}
         </div>
-        
         <div class="form-field" style="width:150px;">
             {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.phoneNumber) }}
     
     <br>
     
@@ -155,56 +143,51 @@
     <div class="form-group">
         <div class="form-label bold">
             {{ form_label(form.isAtWork, "Adresse de travail") }}
-            {{ form_errors(form.isAtWork) }}
         </div>
-        
         <div class="form-field" style="margin-top:5px;">
             {{ form_widget(form.isAtWork) }}
         </div>
     </div>
+    {{ form_errors(form.isAtWork) }}
     
     <br>
     
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.address.address, "Autre adresse") }}
-            {{ form_errors(form.address.address) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.address.address, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.address.address) }}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.address.addressComplement, "Complément d'aresse") }}
-            {{ form_errors(form.address.addressComplement) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.address.addressComplement, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.address.addressComplement) }}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.address.postalCode, "Code postal") }}
-            {{ form_errors(form.address.postalCode) }}
         </div>
-        
         <div class="form-field" style="width:100px;">
             {{ form_widget(form.address.postalCode, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.address.postalCode) }}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.address.city, "Ville") }}
-            {{ form_errors(form.address.city) }}
         </div>
-        
         <div class="form-field" style="width:200px;">
             {{ form_widget(form.address.city, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
+    {{ form_errors(form.address.city) }}
     
     <br>
     
@@ -212,13 +195,12 @@
     <div class="form-group">
         <div class="form-label bold">
             {{ form_label(form.image.file, "Image") }}
-            {{ form_errors(form.image.file) }}
         </div>
-        
         <div class="form-field">
             {{ form_widget(form.image.file) }}
         </div>
     </div>
+    {{ form_errors(form.image.file) }}
     
     <br>
     

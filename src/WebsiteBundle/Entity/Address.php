@@ -3,6 +3,7 @@
 namespace WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Address
@@ -25,13 +26,21 @@ class Address
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
+     * @Assert\Length(max=255, maxMessage="L'adresse ne peut pas avoir plus de {{ limit }} caractères.")
+     * @Assert\NotBlank(message="Ce champ est requis.")
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="postalCode", type="string", length=255)
+     * @ORM\Column(name="postalCode", type="string", length=5)
+     * @Assert\Length(
+            max=5,
+            min=5,
+            exactMessage="Le code postal doit avoir {{ limit }} chiffres."
+        )
+     * @Assert\NotBlank(message="Ce champ est requis.")
      */
     private $postalCode;
 
@@ -39,6 +48,8 @@ class Address
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\Length(max=255, maxMessage="La ville ne peut pas avoir plus de {{ limit }} caractères.")
+     * @Assert\NotBlank(message="Ce champ est requis.")
      */
     private $city;
 
@@ -46,6 +57,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="addressComplement", type="string", length=255, nullable=true)
+     * @Assert\Length(max=255, maxMessage="Le complément d'adresse ne peut pas avoir plus de {{ limit }} caractères.")
      */
     private $addressComplement;
 

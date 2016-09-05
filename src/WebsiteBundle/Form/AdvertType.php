@@ -34,10 +34,21 @@ class AdvertType extends AbstractType
                 'expanded' => true
             ))
             ->add('toComeUp',       CheckboxType::class, array('required' => false))
-            ->add('dateStart',      DateType::class)
-            ->add('dateEnd',        DateType::class, array('required' => false))
-            ->add('timeStart',      TimeType::class, array('required' => false))
-            ->add('timeEnd',        TimeType::class, array('required' => false))
+            ->add('dateStart',      DateType::class, array(
+                'invalid_message' => "La date n'est pas valide."
+            ))
+            ->add('dateEnd',        DateType::class, array(
+                'required' => false,
+                'invalid_message' => "La date n'est pas valide."
+            ))
+            ->add('timeStart',      TimeType::class, array(
+                'required' => false,
+                'invalid_message' => "L'heure n'est pas valide."
+            ))
+            ->add('timeEnd',        TimeType::class, array(
+                'required' => false,
+                'invalid_message' => "L'heure n'est pas valide."
+            ))
             ->add('dateComplement', TextType::class, array('required' => false))
             ->add('content',        TextareaType::class, array('required' => false))
             ->add('isAtWork',       CheckboxType::class, array('required' => false))

@@ -4,6 +4,7 @@ namespace WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Advert
@@ -26,6 +27,8 @@ class Advert
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(max=255, maxMessage="Le titre ne peut pas avoir plus de {{ limit }} caractères.")
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -33,6 +36,7 @@ class Advert
      * @var bool
      *
      * @ORM\Column(name="to_come_up", type="boolean")
+     * @Assert\Type("bool", message="Le type de ce champ doit être un booléen.")
      */
     private $toComeUp;
     
@@ -40,6 +44,7 @@ class Advert
      * @var \DateTime
      *
      * @ORM\Column(name="date_start", type="date")
+     * @Assert\DateTime(message="La date n'est pas valide.")
      */
     private $dateStart;
 
@@ -47,6 +52,7 @@ class Advert
      * @var \DateTime
      *
      * @ORM\Column(name="date_end", type="date", nullable=true)
+     * @Assert\DateTime(message="La date n'est pas valide.")
      */
     private $dateEnd;
 
@@ -54,6 +60,7 @@ class Advert
      * @var \DateTime
      *
      * @ORM\Column(name="time_start", type="time", nullable=true)
+     * @Assert\Time(message="L'heure n'est pas valide.")
      */
     private $timeStart;
 
@@ -61,6 +68,7 @@ class Advert
      * @var \DateTime
      *
      * @ORM\Column(name="time_end", type="time", nullable=true)
+     * @Assert\Time(message="L'heure n'est pas valide.")
      */
     private $timeEnd;
 
@@ -68,6 +76,7 @@ class Advert
      * @var string
      *
      * @ORM\Column(name="date_complement", type="string", length=255, nullable=true)
+     * @Assert\Length(max=255, maxMessage="Ce champ ne peut pas avoir plus de {{ limit }} caractères.")
      */
     private $dateComplement;
 
@@ -82,6 +91,7 @@ class Advert
      * @var bool
      *
      * @ORM\Column(name="isAtWork", type="boolean")
+     * @Assert\Type("bool", message="Le type de ce champ doit être un booléen.")
      */
     private $isAtWork;
 
@@ -89,13 +99,21 @@ class Advert
      * @var string
      *
      * @ORM\Column(name="link", type="string", length=255, nullable=true)
+     * @Assert\Length(max=255, maxMessage="Le lien ne peut pas avoir plus de {{ limit }} caractères.")
+     * @Assert\Url()
      */
     private $link;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phoneNumber", type="string", length=255, nullable=true)
+     * @ORM\Column(name="phoneNumber", type="string", length=21, nullable=true)
+     * @Assert\Length(
+            max=21,
+            min=10,
+            maxMessage="Le numéro de téléphone est trop long.",
+            minMessage="Le numéro de téléphone doit avoir au moins {{ limit }} chiffres"
+        )
      */
     private $phoneNumber;
 
@@ -103,21 +121,25 @@ class Advert
      * @var int
      *
      * @ORM\Column(name="tariff", type="integer", nullable=true)
+     * @Assert\Type("integer", message="Le type de ce champ doit être un entier.")
      */
     private $tariff;
     
     /**
      * @ORM\ManyToOne(targetEntity="WebsiteBundle\Entity\Image", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $image;
     
     /**
      * @ORM\ManyToOne(targetEntity="WebsiteBundle\Entity\Address", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $address;
     
     /**
      * @ORM\ManyToMany(targetEntity="WebsiteBundle\Entity\Category", cascade={"persist"})
+     * @Assert\Valid()
      */
     private $categories;
     
