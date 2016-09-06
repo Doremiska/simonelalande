@@ -9,12 +9,7 @@ use WebsiteBundle\Form\AdvertType;
 use WebsiteBundle\Entity\Advert;
 
 class AdminController extends Controller
-{
-    public function indexAction()
-    {
-        return $this->render('AdminBundle:Admin:index.html.twig');
-    }
-    
+{ 
     public function addAction(Request $request)
     {
         $advert = new Advert;

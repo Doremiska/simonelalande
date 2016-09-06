@@ -1,5 +1,31 @@
 <div class="form">
+    
     {{ form_start(form) }}
+    
+    {% if form_errors(form.title) is not empty or
+        form_errors(form.categories) is not empty or
+        form_errors(form.toComeUp) is not empty or
+        form_errors(form.dateStart) is not empty or
+        form_errors(form.dateEnd) is not empty or
+        form_errors(form.timeStart) is not empty or
+        form_errors(form.timeEnd) is not empty or
+        form_errors(form.dateComplement) is not empty or
+        form_errors(form.content) is not empty or
+        form_errors(form.link) is not empty or
+        form_errors(form.tariff) is not empty or
+        form_errors(form.tariffReservation) is not empty or
+        form_errors(form.phoneNumber) is not empty or
+        form_errors(form.animatedBy) is not empty or
+        form_errors(form.fonction) is not empty or
+        form_errors(form.isAtWork) is not empty or
+        form_errors(form.address) is not empty or
+        form_errors(form.image) is not empty
+    %}
+        <div class="alert alert-danger" style="margin:-30px 0 30px 0;">
+            <strong>Erreur ! </strong>Un champ du formulaire n'est pas valide.
+        </div>
+    {% endif %}
+    
     {{ form_errors(form) }}
     
     {# Titre de l'annonce #}
@@ -115,16 +141,31 @@
     </div>
     {{ form_errors(form.link) }}
     
+    <br>
+    
     {# Tarif #}
     <div class="form-group">
-        <div class="form-label">
+        <div class="form-label bold">
             {{ form_label(form.tariff, "Prix (€)") }}
         </div>
-        <div class="form-field" style="width:50px;">
+        <div class="form-field" style="width:60px;">
             {{ form_widget(form.tariff, {'attr': {'class': 'form-widget'}}) }}
         </div>
     </div>
     {{ form_errors(form.tariff) }}
+    
+    {# Tarif de réservation #}
+    <div class="form-group">
+        <div class="form-label">
+            {{ form_label(form.tariffReservation, "Prix de réservation (€)") }}
+        </div>
+        <div class="form-field" style="width:60px;">
+            {{ form_widget(form.tariffReservation, {'attr': {'class': 'form-widget'}}) }}
+        </div>
+    </div>
+    {{ form_errors(form.tariffReservation) }}
+    
+    <br>
     
     {# Téléphone #}
     <div class="form-group">
@@ -136,6 +177,30 @@
         </div>
     </div>
     {{ form_errors(form.phoneNumber) }}
+    
+    <br>
+    
+    {# Animé par #}
+    <div class="form-group">
+        <div class="form-label">
+            {{ form_label(form.animatedBy, "Animé par") }}
+        </div>
+        <div class="form-field" style="width:200px;">
+            {{ form_widget(form.animatedBy, {'attr': {'class': 'form-widget'}}) }}
+        </div>
+    </div>
+    {{ form_errors(form.animatedBy) }}
+    
+    {# Fonction #}
+    <div class="form-group">
+        <div class="form-label">
+            {{ form_label(form.fonction, "Fonction") }}
+        </div>
+        <div class="form-field" style="width:200px;">
+            {{ form_widget(form.fonction, {'attr': {'class': 'form-widget'}}) }}
+        </div>
+    </div>
+    {{ form_errors(form.fonction) }}
     
     <br>
     
@@ -152,6 +217,7 @@
     
     <br>
     
+    {# Autre adresse #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.address.address, "Autre adresse") }}
@@ -161,6 +227,8 @@
         </div>
     </div>
     {{ form_errors(form.address.address) }}
+    
+    {# Complément d'adresse #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.address.addressComplement, "Complément d'aresse") }}
@@ -170,6 +238,8 @@
         </div>
     </div>
     {{ form_errors(form.address.addressComplement) }}
+    
+    {# Code Postal #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.address.postalCode, "Code postal") }}
@@ -179,6 +249,8 @@
         </div>
     </div>
     {{ form_errors(form.address.postalCode) }}
+    
+    {# Ville #}
     <div class="form-group">
         <div class="form-label">
             {{ form_label(form.address.city, "Ville") }}
@@ -194,7 +266,7 @@
     {# Image #}
     <div class="form-group">
         <div class="form-label bold">
-            {{ form_label(form.image.file, "Image") }}
+            {{ form_label(form.image.file, "Image (130x180)") }}
         </div>
         <div class="form-field">
             {{ form_widget(form.image.file) }}

@@ -97,17 +97,19 @@
             {% endif %}
         </h2>
         
-        {% for message in app.session.flashbag.get('notice') %}
-            <div class="alert alert-success fade in">Message flash : {{ message }}</div>
-        {% endfor %}
-        
-        <p>
-            <a href="{{ path('admin_add') }}" class="btn btn-default">
-                <img src="{{ asset('glyphicon/glyphicons-191-plus-sign.png') }}" alt="glyphicon-plus">
-                Ajouter une annonce
-            </a>
-        </p>
-        
+        {% if is_granted('ROLE_ADMIN') %}
+            {% for message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">Message flash : {{ message }}</div>
+            {% endfor %}
+
+            <p>
+                <a href="{{ path('admin_add') }}" class="btn btn-default">
+                    <img src="{{ asset('glyphicon/glyphicons-191-plus-sign.png') }}" alt="glyphicon-plus">
+                    Ajouter une annonce
+                </a>
+            </p>
+        {% endif %}
+            
         <p class="underline">À venir :</p>
         
         {% for advert in listAdvertsFuture %}

@@ -1,0 +1,42 @@
+{% extends "AdminBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Identification{% endblock %}
+
+{% block body_admin %}
+   
+    <h2>Portail d'identification</h2>
+    
+    {% if error %}
+        <div class="alert alert-danger">{{ error.message }}</div>
+    {% endif %}
+    
+    <form action="{{ path('login_check') }}" method="post">
+        {# Nom d'utilisateur #}
+        <div class="form-group">
+            <div class="form-label bold">
+                <label for="username">Nom d'utilisateur : </label>    
+            </div>
+            <div class="form-field" style="width:200px;">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-widget">
+            </div>    
+        </div>
+        
+        
+        {# Mot de passe #}
+        <div class="form-group">
+            <div class="form-label bold">
+                <label for="password">Mot de passe : </label>    
+            </div>
+            <div class="form-field" style="width:200px;">
+                <input type="password" id="password" name="_password" class="form-widget">
+            </div>    
+        </div>
+        
+        <br>
+        
+        <div class="center">
+            <input type="submit" value="Connexion" class="btn-submit">
+        </div>
+              
+    </form>
+{% endblock %}

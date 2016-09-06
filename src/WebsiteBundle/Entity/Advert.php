@@ -5,6 +5,7 @@ namespace WebsiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Advert
@@ -126,6 +127,30 @@ class Advert
     private $tariff;
     
     /**
+     * @var int
+     *
+     * @ORM\Column(name="tariffReservation", type="integer", nullable=true)
+     * @Assert\Type("integer", message="Le type de ce champ doit être un entier.")
+     */
+    private $tariffReservation;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="animatedBy", type="string", length=255, nullable=true)
+     * @Assert\Length(max=255, maxMessage="Ce champ ne peut pas avoir plus de {{ limit }} caractères.")
+     */
+    private $animatedBy;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fonction", type="string", length=255, nullable=true)
+     * @Assert\Length(max=255, maxMessage="Ce champ ne peut pas avoir plus de {{ limit }} caractères.")
+     */
+    private $fonction;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="WebsiteBundle\Entity\Image", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
@@ -150,6 +175,41 @@ class Advert
         $this->dateStart = new \Datetime();
         $this->categories = new ArrayCollection();
     }
+    
+    
+    
+    /**
+     * @Assert\Callback
+     */
+    public function isContentValid(ExecutionContextInterface $context)
+    {
+        if ($this->dateEnd !== null && $this->dateEnd < $this->dateStart) {
+            $context
+                ->buildViolation("Cette date doit être postérieure à la date de début.")
+                ->atPath('dateEnd')
+                ->addViolation()
+            ;
+        }
+        
+        if ($this->isAtWork && !is_null($this->address)) {
+            $context
+                ->buildViolation("Vous ne pouvez sélectionner l'adresse de travail si une autre adresse est remplie.")
+                ->atPath('isAtWork')
+                ->addViolation()
+            ;
+        }
+        
+        if ($this->tariffReservation !== null && $this->tariff === null) {
+            $context
+                ->buildViolation("Vous devez indiquer un prix.")
+                ->atPath('tariff')
+                ->addViolation()
+            ;
+        }
+            
+        
+    }
+    
     
     
     /**
@@ -530,5 +590,77 @@ class Advert
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Set tariffReservation
+     *
+     * @param integer $tariffReservation
+     *
+     * @return Advert
+     */
+    public function setTariffReservation($tariffReservation)
+    {
+        $this->tariffReservation = $tariffReservation;
+
+        return $this;
+    }
+
+    /**
+     * Get tariffReservation
+     *
+     * @return integer
+     */
+    public function getTariffReservation()
+    {
+        return $this->tariffReservation;
+    }
+
+    /**
+     * Set animatedBy
+     *
+     * @param string $animatedBy
+     *
+     * @return Advert
+     */
+    public function setAnimatedBy($animatedBy)
+    {
+        $this->animatedBy = $animatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get animatedBy
+     *
+     * @return string
+     */
+    public function getAnimatedBy()
+    {
+        return $this->animatedBy;
+    }
+
+    /**
+     * Set fonction
+     *
+     * @param string $fonction
+     *
+     * @return Advert
+     */
+    public function setFonction($fonction)
+    {
+        $this->fonction = $fonction;
+
+        return $this;
+    }
+
+    /**
+     * Get fonction
+     *
+     * @return string
+     */
+    public function getFonction()
+    {
+        return $this->fonction;
     }
 }

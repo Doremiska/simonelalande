@@ -12,13 +12,23 @@
                 {% if advert.toComeUp %}
                     DATE À VENIR...
                 {% elseif advert.dateEnd is null %}
-                    {{ advert.dateStart|localizeddate('full', 'none')|upper }}
+                    {{ advert.dateStart|localizeddate('full', 'none', null, null, 'cccc dd LLLL yyyy')|upper }}
                 {% else %}
-                    DU {{ advert.dateStart|date('j') }} AU {{ advert.dateEnd|localizeddate('long', 'none')|upper }}
+                    DU 
+                    {% if advert.dateStart|date('m') == advert.dateEnd|date('m') %}
+                        {{ advert.dateStart|date('d') }}
+                    {% else %}
+                        {{ advert.dateStart|localizeddate('full', 'none', null, null, 'dd LLLL')|upper }}
+                    {% endif %}
+                    {% if advert.dateStart|date('Y') != advert.dateEnd|date('Y') %}
+                        {{ advert.dateStart|date('Y') }}
+                    {% endif %}
+                    AU 
+                    {{ advert.dateEnd|localizeddate('long', 'none', null, null, 'dd LLLL yyyy')|upper }}
                 {% endif %}
 
-                {% if advert.timeStart is not null %} 
-                    de {{ advert.timeStart|date('H') }}h à {{ advert.timeEnd|date('H') }}h
+                {% if advert.timeStart is not null and advert.timeEnd is not null %} 
+                    de {{ advert.timeStart|date('H\\hi') }} à {{ advert.timeEnd|date('H\\hi') }}
                 {% endif %}
             </strong>
 
@@ -29,53 +39,76 @@
             <br />
 
             {{ advert.content }}
-        </p>
-
-        <!-- Adresse de l'annonce -->
-        <p>
-            {% if advert.isAtWork %}
-                <strong>Adresse : </strong>
-                (<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)
-                <br />
-                1, rue Alauzet 34090 MONTPELLIER
-                <br />
-                Quartier Boutonnet (Tram 1 et 4 : arrêt Albert 1er)
-            {% elseif advert.address is not null %}
-                <strong>Adresse : </strong>
-                <br>
-                {{ advert.address.address }}
-                {% if advert.address.addressComplement is not null %}
-                    <br>
-                    {{ advert.address.addressComplement }}
-                {% endif %}
-                <br>
-                {{ advert.address.postalCode }} {{ advert.address.city|upper }}
-            {% endif %} 
+            
             {% if advert.link is not null %}
-                <br>
-                <a class="link_gray"  href="{{ advert.link }}" title="{{ advert.link }}" target="_blank">En savoir plus</a>
+                <p style="margin-top:-10px;">
+                    <a class="link_gray"  href="{{ advert.link }}" title="{{ advert.link }}" target="_blank">En savoir plus</a>
+                </p>
             {% endif %}
         </p>
-
-        {% if advert.tariff is not null %}
-            <p>Prix : {{ advert.tariff }} €</p>
+            
+        <!-- Tarif -->
+        {% if advert.tariff is not null or advert.animatedBy is not null or advert.fonction is not null %}
+            <p>
+                {% if advert.tariff is not null %}
+                    <strong>Prix : {{ advert.tariff }} €</strong>{% if advert.tariffReservation is not null %} ({{ advert.tariffReservation }} € à la réservation){% endif %}
+                {% endif %}
+                <br>
+                {% if advert.animatedBy is not null or advert.fonction is not null %}
+                    {% if advert.animatedBy is not null %}
+                        Animé par {{ advert.animatedBy }}
+                    {% endif %}
+                    <br>
+                    {% if advert.fonction is not null %}
+                        {{ advert.fonction }}
+                    {% endif %}
+                {% endif %}
+            </p>
         {% endif %}
+        
+        <!-- Adresse de l'annonce -->
+        {% if advert.isAtWork or advert.address is not null %}
+            <p>
+                {% if advert.isAtWork %}
+                    <strong>Adresse : </strong>
+                    (<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)
+                    <br />
+                    1, rue Alauzet 34090 MONTPELLIER
+                    <br />
+                    Quartier Boutonnet (Tram 1 et 4 : arrêt Albert 1er)
+                {% elseif advert.address is not null %}
+                    <strong>Adresse : </strong>
+                    <br>
+                    {{ advert.address.address }}
+                    {% if advert.address.addressComplement is not null %}
+                        <br>
+                        {{ advert.address.addressComplement }}
+                    {% endif %}
+                    <br>
+                    {{ advert.address.postalCode }} {{ advert.address.city|upper }}
+                {% endif %} 
+            </p>
+        {% endif %}
+            
+        <!-- Téléphone -->
         {% if advert.phoneNumber is not null %}
-            <p>Renseignements et inscriptions au <span class="nowrap">{{ advert.phoneNumber }}</span></p>
+            <p><strong>Renseignements et inscriptions au <span class="nowrap">{{ advert.phoneNumber }}</span></strong></p>
         {% endif %}   
         
-        <p>
-            <a href="{{ path('admin_edit', {'id': advert.id}) }}" class="btn btn-default">
-                <img src="{{ asset('glyphicon/glyphicons-151-edit.png') }}" alt="glyphicon-edit">
-                Modifier l'annonce
-            </a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <p>
+                <a href="{{ path('admin_edit', {'id': advert.id}) }}" class="btn btn-default">
+                    <img src="{{ asset('glyphicon/glyphicons-151-edit.png') }}" alt="glyphicon-edit">
+                    Modifier l'annonce
+                </a>
 
-            <a href="{{ path('admin_delete', {'id': advert.id}) }}" class="btn btn-default">
-                <img src="{{ asset('glyphicon/glyphicons-17-bin.png') }}" alt="glyphicon-bin">
-                Supprimer l'annonce
-            </a>
-        </p>
-
+                <a href="{{ path('admin_delete', {'id': advert.id}) }}" class="btn btn-default">
+                    <img src="{{ asset('glyphicon/glyphicons-17-bin.png') }}" alt="glyphicon-bin">
+                    Supprimer l'annonce
+                </a>
+            </p>
+        {% endif %}
+            
     </article>
 
     {% if advert.image is not null %}
