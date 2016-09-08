@@ -782,6 +782,18 @@ h6 {
     background-color: #e0acac;
 }
 
+.btn-logout {
+    padding: 6px 12px 6px 12px;
+    background-color: #408ccb;
+    color: #ffffff;
+    font-size: 1em;
+    border: none;
+}
+
+.btn-logout:hover {
+    background-color: #2e72a9;
+}
+
 @media all and (max-width: 650px) {
     .btn {
         display: -webkit-flex;
@@ -816,4 +828,13 @@ h6 {
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
+}
+
+#actualites-bar {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
 }

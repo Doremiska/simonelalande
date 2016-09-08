@@ -7,7 +7,7 @@
     <h2>Portail d'identification</h2>
     
     {% if error %}
-        <div class="alert alert-danger">{{ error.message }}</div>
+        <div class="alert alert-danger"><strong>Erreur ! </strong>Votre nom d'utilisateur et/ou mot de passe ne sont pas valide.</div>
     {% endif %}
     
     <form action="{{ path('login_check') }}" method="post">

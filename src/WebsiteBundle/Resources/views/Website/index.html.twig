@@ -102,10 +102,13 @@
                 <div class="alert alert-success">Message flash : {{ message }}</div>
             {% endfor %}
 
-            <p>
+            <p id="actualites-bar">
                 <a href="{{ path('admin_add') }}" class="btn btn-default">
                     <img src="{{ asset('glyphicon/glyphicons-191-plus-sign.png') }}" alt="glyphicon-plus">
                     Ajouter une annonce
+                </a>
+                <a href="{{ path('logout') }}" class="btn btn-logout">
+                    Déconnexion
                 </a>
             </p>
         {% endif %}
