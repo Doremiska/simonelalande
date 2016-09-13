@@ -6,6 +6,11 @@
 
 {% block description %}Pour en savoir plus sur les séances que je propose ou pour prendre un RDV contactez moi au 06 18 67 44 08 - Plan : 1 rue Alauzet 34090 MONTPELLIER.{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('form/css/form.css') }}" type="text/css">  
+{% endblock %}
+
 {% block contact %}style="background-color: rgb(253,172,83); color: rgb(128,51,0);"{% endblock %}
 
 
@@ -16,7 +21,7 @@
      
        
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Informations  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
-    <div id="informations">
+    <div id="informations" style="margin-top:-15px;">
         <div>
             <p style="font-family:georgia,serif; font-size:1.2em;"><strong>Simone LALANDE</strong></p>
 
@@ -35,6 +40,98 @@
     </div>
 
 
+    {# Formulaire de contact #}
+    <section>
+        <h2 id="formulaire_contact">Formulaire de contact</h2>
+        
+        {% for message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success"><strong>Message flash :</strong> {{ message }}</div>
+        {% endfor %}
+        
+        <div class="form-contact">
+            {{ form_start(form, {'action': '#formulaire_contact'}) }}
+    
+            {% if form_errors(form.objet) is not empty or
+                form_errors(form.contenu) is not empty or
+                form_errors(form.email) is not empty or
+                form_errors(form.nom) is not empty or
+                form_errors(form.prenom) is not empty
+            %}
+                <div class="alert alert-danger" style="margin:-30px 0 30px 0;">
+                    <strong>Erreur ! </strong>Un champ du formulaire n'est pas valide.
+                </div>
+            {% endif %}
+
+            {{ form_errors(form) }}
+
+            {# Objet #}
+            <div class="form-group-contact">
+                <div class="form-label-contact bold">
+                    <span class="nowrap">{{ form_label(form.objet, "Objet *") }}</span>
+                </div>
+                <div class="form-field-contact">
+                    {{ form_widget(form.objet, {'attr': {'class': 'form-widget', 'placeholder': "Objet de votre message"}}) }}
+                </div>
+            </div>
+            {{ form_errors(form.objet) }}
+
+           {# Contenu #}
+            <div class="form-group-contact">
+                <div class="form-label-contact bold">
+                    <span class="nowrap">{{ form_label(form.contenu, "Contenu *") }}</span>
+                </div>
+                <div class="form-field-contact" style="margin-top:4px;">
+                    {{ form_widget(form.contenu, {'attr': {'class': 'form-widget text-area-contact', 'placeholder': 'Tapez ici votre message'}}) }}
+                </div>
+            </div>
+            {{ form_errors(form.contenu) }}
+            
+            {# Email #}
+            <div class="form-group-contact">
+                <div class="form-label-contact bold">
+                    <span class="nowrap">{{ form_label(form.email, "Email *") }}</span>
+                </div>
+                <div class="form-field-contact" style="width: 300px;">
+                    {{ form_widget(form.email, {'attr': {'class': 'form-widget', 'placeholder': 'Votre email de contact'}}) }}
+                </div>
+            </div>
+            {{ form_errors(form.email) }}
+
+           {# Nom #}
+            <div class="form-group-contact">
+                <div class="form-label-contact bold">
+                    <span class="nowrap">{{ form_label(form.nom, "Nom *") }}</span>
+                </div>
+                <div class="form-field-contact" style="width: 200px;">
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-widget', 'placeholder': 'Votre nom'}}) }}
+                </div>
+            </div>
+            {{ form_errors(form.nom) }}
+            
+            {# Prénom #}
+            <div class="form-group-contact">
+                <div class="form-label-contact bold">
+                    <span class="nowrap">{{ form_label(form.prenom, "Prénom *") }}</span>
+                </div>
+                <div class="form-field-contact" style="width: 200px;">
+                    {{ form_widget(form.prenom, {'attr': {'class': 'form-widget', 'placeholder': 'Votre prénom'}}) }}
+                </div>
+            </div>
+            {{ form_errors(form.prenom) }}
+            
+            <p>* : champs obligatoires</p>
+            
+            {# Envoyer #}
+            <div class="center">
+                {{ form_widget(form.envoyer, {'attr': {'class': 'btn-submit'}, 'label': 'Envoyer'}) }}
+            </div>
+            
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+        
+    </section>
+    
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Plan  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <section>

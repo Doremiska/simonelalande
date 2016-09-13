@@ -122,7 +122,7 @@ class Advert
      * @var int
      *
      * @ORM\Column(name="tariff", type="integer", nullable=true)
-     * @Assert\Type("integer", message="Le type de ce champ doit être un entier.")
+     * @Assert\Type("numeric", message="Vous devez rentrer un nombre.")
      */
     private $tariff;
     
@@ -130,7 +130,7 @@ class Advert
      * @var int
      *
      * @ORM\Column(name="tariffReservation", type="integer", nullable=true)
-     * @Assert\Type("integer", message="Le type de ce champ doit être un entier.")
+     * @Assert\Type("numeric", message="Vous devez rentrer un nombre.")
      */
     private $tariffReservation;
     

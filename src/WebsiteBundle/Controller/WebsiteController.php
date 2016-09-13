@@ -5,6 +5,7 @@ namespace WebsiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use WebsiteBundle\Form\ContactType;
 
 class WebsiteController extends Controller
 {
@@ -149,9 +150,40 @@ class WebsiteController extends Controller
         return $this->render('WebsiteBundle:Website:mon_approche.html.twig');
     }
     
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        return $this->render('WebsiteBundle:Website:contact.html.twig');
+        $form = $this->createForm(ContactType::class);
+        
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            
+            // Envoye de l'email
+            $data = $form->getData();
+            $message = \Swift_Message::newInstance()
+                ->setSubject($data['objet'])
+                ->setFrom($data['email'])
+                ->setTo('doremiska@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'Emails/contact_email.html.twig',
+                        array(
+                            'contenu' => $data['contenu'],
+                            'nom' => $data['nom'],
+                            'prenom' => $data['prenom']
+                        )
+                    ),
+                    'text/html'
+                )
+            ;
+                
+            $this->get('mailer')->send($message);
+            
+            $request->getSession()->getFlashBag()->add('notice', "Votre message a bien été envoyé.");
+            
+            return $this->redirect($this->generateUrl('website_contact').'#formulaire_contact');
+            
+        } 
+        
+        return $this->render('WebsiteBundle:Website:contact.html.twig', array('form' => $form->createView()));
     }
     
 }

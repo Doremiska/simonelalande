@@ -18,8 +18,11 @@
         form_errors(form.animatedBy) is not empty or
         form_errors(form.fonction) is not empty or
         form_errors(form.isAtWork) is not empty or
-        form_errors(form.address) is not empty or
-        form_errors(form.image) is not empty
+        form_errors(form.address.address) is not empty or
+        form_errors(form.address.city) is not empty or
+        form_errors(form.address.addressComplement) is not empty or
+        form_errors(form.address.postalCode) is not empty or
+        form_errors(form.image.file) is not empty
     %}
         <div class="alert alert-danger" style="margin:-30px 0 30px 0;">
             <strong>Erreur ! </strong>Un champ du formulaire n'est pas valide.

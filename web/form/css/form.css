@@ -1,10 +1,11 @@
-.form {
+.form, .form-contact {
     padding: 20px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.form-group {
-    display: -webkit-flex;
+.form-group,.form-group-contact {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin-bottom: 20px;
 }
@@ -15,17 +16,27 @@
     width: 25%;
 }
 
+.form-label-contact {
+    margin-right: 20px;
+    text-align: right;
+    width: 10%;
+}
+
 .bold {
     font-weight: bold;
 }
 
-.form-label label {
+.form-label label,.form-label-contact label {
     vertical-align: middle;
     padding-top: 6px;
 }
 
 .form-field {
     width: 75%;
+}
+
+.form-field-contact {
+    width: 90%;
 }
 
 .form-widget {
@@ -36,6 +47,7 @@
     border: none;
     border: 1px solid #a5a5a5;
     border-radius: 5px;
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
@@ -45,7 +57,7 @@
     border-color: #7eb9d8; 
 }
 
-.form select {
+.form select, .form-contact select {
     display: inline-block;
     background-color: transparent;
     border: none;
@@ -69,8 +81,17 @@
     padding-top: 5px;
 }
 
+.text-area-contact {
+    height: 200px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding-top: 5px;
+}
+
 @media all and (max-width: 600px) {
     .form-group {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     
@@ -81,6 +102,25 @@
     }
     
     .form-field {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 900px) {
+    .form-group-contact {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    
+    .form-label-contact {
+        margin: 0 0 5px 0;
+        text-align: left;
+        width: 100%;
+    }
+    
+    .form-field-contact {
         width: 100%;
     }
 }
@@ -132,7 +172,7 @@
 
 
 /* Erreurs */
-.form li {
+.form li, .form-contact li {
     color: red;
     background: url(../../glyphicon/warning.jpg) no-repeat left top;
     padding: 0px 0px 5px 25px;
@@ -145,8 +185,18 @@
     margin-top: -10px;
 }
 
+.form-contact ul {
+    margin: -10px 0 20px 7%;
+}
+
 @media all and (max-width: 600px) {
     .form ul {
+        margin-left: -40px;
+    }
+}
+
+@media all and (max-width: 900px) {
+    .form-contact ul {
         margin-left: -40px;
     }
 }
