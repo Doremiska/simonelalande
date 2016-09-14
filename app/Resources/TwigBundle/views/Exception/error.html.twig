@@ -1,0 +1,23 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Erreur {{ status_code }}{% endblock %}
+
+{% block body %}
+   
+    <h2>Erreur {{ status_code }} !</h2>
+    
+    <p>
+        <strong>Une erreur {{ status_code }} vient de se produire :</strong> 
+    </p>
+    <p>
+        Quelque chose ne fonctionne pas correctement. Si l'erreur persiste, merci de nous reporter la situation dans laquelle cette erreur s'est produite à l'adresse suivante (sur quel lien avez-vous cliqué, depuis quelle page vous venez et quelle est l'adresse indiquée dans la barre de recherche) : <br>
+        <div style="margin-left:20px;">
+            - <a  href="mailto:doremiska@gmail.com" target="_blank">doremiska@gmail.com</a>
+        </div>
+    </p>
+    <p>
+        Merci pour votre aide ! Nous allons tout mettre en oeuvre pour résoudre ce problème aussi vite que possible.
+    </p>
+       
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Erreur 404{% endblock %}
+
+{% block body %}
+   
+    <h2>Erreur 404 : page non trouvée ou inexistante !</h2>
+    
+    <p>
+        <strong>Une erreur 404 vient de se produire :</strong> 
+    </p>
+    <p>    
+        Cela peut être dû à une entrée erronée dans la barre de recherche ou bien au fait que la page recherchée est inexistante. Dans ce cas là revenez sur la page où vous étiez avant en cliquant sur le bouton précédent de votre navigateur, ou alors, cliquez sur n'importe quel lien dans la barre de menu pour revenir sur un page existante.
+    </p>
+    <p>
+        Si toutefois cette erreur se produit dans une utilisation normale du site (par exemple en cliquant sur lien), merci de contacter le Webmaster à l'adresse suivante : <br>
+        <div style="margin-left:20px;">
+            - <a  href="mailto:doremiska@gmail.com" target="_blank">doremiska@gmail.com</a>
+        </div>
+    </p>
+    <p>
+        Indiquez la situation qui vous a fait arriver sur cette page (sur quel lien avez-vous cliqué, depuis quelle page vous venez et quelle est l'adresse indiquée dans la barre de recherche). Merci pour votre aide !
+    </p>
+
+    
+{% endblock %}

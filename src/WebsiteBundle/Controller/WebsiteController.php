@@ -166,7 +166,7 @@ class WebsiteController extends Controller
                     $this->renderView(
                         'Emails/contact_email.html.twig',
                         array(
-                            'contenu' => nl2br($data['contenu']),
+                            'contenu' => $data['contenu'],
                             'nom' => $data['nom'],
                             'prenom' => $data['prenom']
                         )
