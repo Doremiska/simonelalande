@@ -4,8 +4,7 @@
 }
 
 .form-group,.form-group-contact {
-    display: -webkit-box;
-    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     margin-bottom: 20px;
 }
@@ -76,12 +75,14 @@
 }
 
 .text-area {
+    resize: vertical;
     height: 100px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     padding-top: 5px;
 }
 
 .text-area-contact {
+    resize: vertical;
     height: 200px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     padding-top: 5px;
@@ -89,9 +90,7 @@
 
 @media all and (max-width: 600px) {
     .form-group {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
         flex-direction: column;
     }
     
@@ -108,9 +107,7 @@
 
 @media all and (max-width: 900px) {
     .form-group-contact {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
         flex-direction: column;
     }
     

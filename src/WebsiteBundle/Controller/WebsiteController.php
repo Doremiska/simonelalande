@@ -166,7 +166,7 @@ class WebsiteController extends Controller
                     $this->renderView(
                         'Emails/contact_email.html.twig',
                         array(
-                            'contenu' => $data['contenu'],
+                            'contenu' => nl2br($data['contenu']),
                             'nom' => $data['nom'],
                             'prenom' => $data['prenom']
                         )
@@ -174,7 +174,7 @@ class WebsiteController extends Controller
                     'text/html'
                 )
             ;
-                
+            
             $this->get('mailer')->send($message);
             
             $request->getSession()->getFlashBag()->add('notice', "Votre message a bien été envoyé.");
