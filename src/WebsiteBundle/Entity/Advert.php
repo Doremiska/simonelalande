@@ -91,10 +91,10 @@ class Advert
     /**
      * @var bool
      *
-     * @ORM\Column(name="isAtWork", type="boolean")
+     * @ORM\Column(name="atWork", type="boolean")
      * @Assert\Type("bool", message="Le type de ce champ doit être un booléen.")
      */
-    private $isAtWork;
+    private $atWork;
 
     /**
      * @var string
@@ -191,10 +191,10 @@ class Advert
             ;
         }
         
-        if ($this->isAtWork && !is_null($this->address)) {
+        if ($this->atWork && !is_null($this->address)) {
             $context
                 ->buildViolation("Vous ne pouvez sélectionner l'adresse de travail si une autre adresse est remplie.")
-                ->atPath('isAtWork')
+                ->atPath('atWork')
                 ->addViolation()
             ;
         }
@@ -391,27 +391,27 @@ class Advert
     }
 
     /**
-     * Set isAtWork
+     * Set atWork
      *
-     * @param boolean $isAtWork
+     * @param boolean $atWork
      *
      * @return Advert
      */
-    public function setIsAtWork($isAtWork)
+    public function setatWork($atWork)
     {
-        $this->isAtWork = $isAtWork;
+        $this->atWork = $atWork;
 
         return $this;
     }
 
     /**
-     * Get isAtWork
+     * Get atWork
      *
      * @return bool
      */
-    public function getIsAtWork()
+    public function getatWork()
     {
-        return $this->isAtWork;
+        return $this->atWork;
     }
 
     /**

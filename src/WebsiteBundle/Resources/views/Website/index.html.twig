@@ -112,8 +112,6 @@
                 </a>
             </p>
         {% endif %}
-            
-        <p class="underline">À venir :</p>
         
         {% for advert in listAdvertsFuture %}
             {{ include("WebsiteBundle:Website:advert.html.twig") }}
@@ -122,14 +120,6 @@
         {% for advert in listAdvertsToComeUp %}
             {{ include("WebsiteBundle:Website:advert.html.twig") }}
         {% endfor %}
-
-        <p class="underline">Passés :</p>
-        
-        {% for advert in listAdvertsPast %}
-            {{ include("WebsiteBundle:Website:advert.html.twig") }}
-        {% endfor %}
-
-        <p><a id="events" href="{{ path('website_events_old') }}">Lien vers les évènements plus anciens</a></p>
 
     </section>
     

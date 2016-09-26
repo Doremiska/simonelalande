@@ -3,7 +3,6 @@
 namespace WebsiteBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
 
 /**
  * AdvertRepository
@@ -12,44 +11,7 @@ use Doctrine\ORM\QueryBuilder;
  * repository methods below.
  */
 class AdvertRepository extends EntityRepository
-{
-    public function getAdvertsOld(\Datetime $date) 
-    {
-        $query = $this->createQueryBuilder('a')
-            ->leftJoin('a.image', 'i')
-            ->addSelect('i')
-            ->leftJoin('a.address', 'ad')
-            ->addSelect('ad')
-            ->where('a.dateStart < :date')
-            ->setParameter('date', $date)
-            ->andWhere('a.toComeUp = 0')
-            ->orderBy('a.dateStart', 'DESC')
-            ->getQuery()
-        ;
-        
-        // On retourn seulement la query car on va paginer dans le controlleur
-        return $query;
-    }
-    
-    public function getAdvertsPast(\Datetime $dateLimit, \Datetime $today) 
-    {
-        $query = $this->createQueryBuilder('a')
-            ->leftJoin('a.image', 'i')
-            ->addSelect('i')
-            ->leftJoin('a.address', 'ad')
-            ->addSelect('ad')
-            ->where('a.dateEnd < :today OR a.dateEnd IS NULL AND a.dateStart < :today')
-            ->setParameter('today', $today)
-            ->andwhere('a.dateStart >= :date')
-            ->setParameter('date', $dateLimit)
-            ->andWhere('a.toComeUp = 0')
-            ->orderBy('a.dateStart', 'DESC')
-            ->getQuery()
-        ;
-        
-        return $query->getResult();
-    }
-    
+{ 
     public function getAdvertsFuture(\Datetime $date) 
     {
         $query = $this->createQueryBuilder('a')

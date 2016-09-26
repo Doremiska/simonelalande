@@ -4,11 +4,11 @@ website_homepage:
     
 website_access_bars:
     path:     /access_bars.html
-    defaults: { _controller: WebsiteBundle:Website:access_bars }
+    defaults: { _controller: WebsiteBundle:Website:accessBars }
     
 website_relation_aide:
     path:     /relation_aide.html
-    defaults: { _controller: WebsiteBundle:Website:relation_aide }
+    defaults: { _controller: WebsiteBundle:Website:relationAide }
     
 website_sophrologie:
     path:     /sophrologie.html
@@ -16,12 +16,8 @@ website_sophrologie:
     
 website_mon_approche:
     path:     /mon_approche.html
-    defaults: { _controller: WebsiteBundle:Website:mon_approche }
+    defaults: { _controller: WebsiteBundle:Website:monApproche }
     
 website_contact:
     path:     /contact.html
     defaults: { _controller: WebsiteBundle:Website:contact }
-    
-website_events_old:
-    path:     /events_old.html
-    defaults: { _controller: WebsiteBundle:Website:events_old }

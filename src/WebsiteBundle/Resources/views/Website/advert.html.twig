@@ -67,9 +67,9 @@
         {% endif %}
         
         <!-- Adresse de l'annonce -->
-        {% if advert.isAtWork or advert.address is not null %}
+        {% if advert.atWork or advert.address is not null %}
             <p>
-                {% if advert.isAtWork %}
+                {% if advert.atWork %}
                     <strong>Adresse : </strong>
                     (<a href="{{ path('website_contact') }}#plan_cabinet">plan</a>)
                     <br />

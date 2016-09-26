@@ -5,7 +5,7 @@ namespace WebsiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use WebsiteBundle\Form\ContactType;
+use WebsiteBundle\Form\Type\ContactType;
 
 class WebsiteController extends Controller
 {
@@ -15,22 +15,14 @@ class WebsiteController extends Controller
         $date = new \Datetime();
         $date->modify('-1day');
         
-        // On crée une dexuième date avec de décalage de 6 mois pour récupérer seulement les annonces des 6 derniers mois pour la page d'accueil
-        $dateLimit = new \Datetime();
-        $dateLimit->modify('-6 months');
-        
-        // On récupère toutes les annonces datant de moins de 6 mois en trois listes (incluant celles à venir)
-        // past, future, toComUp
-        $listAdvertsPast = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('WebsiteBundle:Advert')
-            ->getAdvertsPast($dateLimit, $date)
-        ;
+        // On récupère les annonces à venir (date définie)
         $listAdvertsFuture = $this->getDoctrine()
             ->getManager()
             ->getRepository('WebsiteBundle:Advert')
             ->getAdvertsFuture($date)
         ;
+        
+        // On récupère les annonces à venir (date non définie)
         $listAdvertsToComeUp = $this->getDoctrine()
             ->getManager()
             ->getRepository('WebsiteBundle:Advert')
@@ -38,48 +30,13 @@ class WebsiteController extends Controller
         ;
         
         return $this->render('WebsiteBundle:Website:index.html.twig', array(
-            'listAdvertsPast' => $listAdvertsPast,
             'listAdvertsFuture' => $listAdvertsFuture,
             'listAdvertsToComeUp' => $listAdvertsToComeUp,
             'date' => $date
         ));
     }
     
-    public function events_oldAction(Request $request)
-    {
-        // On crée la date limite des évènements anciens (plus de 6 mois)
-        $dateLimit = new \Datetime();
-        $dateLimit->modify('-6 months');
-        
-        // On récupère la query de toutes les annonces datants de plus de 6 mois
-        $query = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('WebsiteBundle:Advert')
-            ->getAdvertsOld($dateLimit)
-        ;
-        
-        // On pagine la liste des annonces
-        $paginator = $this->get('knp_paginator');
-        $listAdverts = $paginator->paginate(
-            $query,
-            $request->query->getInt('page', 1),
-            5
-        );
-        
-        // On récupère le nombre de pages
-        $nbPages = $listAdverts->getPageCount();
-        
-        // On vérifie que la page entrée est valide
-        if ($request->query->getInt('page', 1) < 1 || $request->query->getInt('page', 1) > $nbPages) {
-            throw new NotFoundHttpException("La page ".$request->query->get('page'). " n'existe pas. Veuillez effacer la partie : \"?page=".$request->query->get('page')."\" de votre barre de recherche pour revenir sur la première page ou rentrer un numéro de page valide.");
-        }
-        
-        return $this->render('WebsiteBundle:Website:events_old.html.twig', array(
-            'listAdverts' => $listAdverts
-        ));
-    }
-    
-    public function access_barsAction()
+    public function accessBarsAction()
     {
         $date = new \Datetime();
         $date->modify('-1day');
@@ -101,7 +58,7 @@ class WebsiteController extends Controller
         ));
     }
     
-    public function relation_aideAction()
+    public function relationAideAction()
     {
         $date = new \Datetime();
         $date->modify('-1day');
@@ -145,7 +102,7 @@ class WebsiteController extends Controller
         ));
     }
     
-    public function mon_approcheAction()
+    public function monApprocheAction()
     {
         return $this->render('WebsiteBundle:Website:mon_approche.html.twig');
     }
@@ -161,7 +118,7 @@ class WebsiteController extends Controller
             $message = \Swift_Message::newInstance()
                 ->setSubject($data['objet'])
                 ->setFrom($data['email'])
-                ->setTo('doremiska@gmail.com')
+                ->setTo('simone.lalande1@gmail.com')
                 ->setBody(
                     $this->renderView(
                         'Emails/contact_email.html.twig',
