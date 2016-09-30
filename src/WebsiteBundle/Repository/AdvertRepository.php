@@ -85,5 +85,17 @@ class AdvertRepository extends EntityRepository
         
         return $query->getResult();
     }
+    
+    public function getAdvertsOlderThan(\Datetime $date) 
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.image', 'i')->addSelect('i')
+            ->leftJoin('a.address', 'ad')->addSelect('ad')
+            ->leftJoin('a.categories', 'c')->addSelect('c')
+            ->where('a.dateStart < :date')->setParameter('date', $date)
+            ->andWhere('a.toComeUp = 0')
+            ->getQuery()->getResult()
+        ;
+    }
        
 }

@@ -1,0 +1,101 @@
+.slider {
+    width: 80%;
+    max-width: 550px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.slides {
+    display: none;
+    width: 100%;
+}
+
+.slides img {
+    width: 100%;
+}
+
+.slides figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+}
+
+.navigation-slider {
+}
+
+.button-slider, .badges {
+    cursor: pointer;
+    color: white;
+}
+
+.button-slider {
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    border-radius: 50%;
+    font-size: 1.4em;
+    text-align: center;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+}
+
+.button-slider:hover {
+    background-color: rgba(204, 204, 204, 0.5); 
+}
+
+.button-slider-left {
+    position: absolute;
+    left: 0;
+    bottom: 47%;
+    margin-left: 14px;
+}
+
+.button-slider-right {
+    position: absolute;
+    right: 0;
+    bottom: 47%;
+    margin-right: 14px;
+}
+
+.badge-container {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.badges {
+    height: 12px;
+    width: 12px;
+    background-color: transparent;
+    color: #fff;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+}
+
+.badges:hover, .white {
+    background-color: #fff;
+}
+
+@media all and (max-width: 600px) {
+    .slider {
+        width: 90%;
+    }
+    
+    .button-slider-left {
+        bottom: 40%;
+        margin-left: 6px;
+    }
+
+    .button-slider-right {
+        bottom: 40%;
+        margin-right: 6px;
+    }
+}

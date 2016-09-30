@@ -373,8 +373,6 @@ h1 {
     }
 }
 
-
-
 .mini {
     display: none;
 }
@@ -385,8 +383,22 @@ h1 {
     }
     
     .mini {
+        display: inline-block;
+        margin-left: -20px!important;
+    }
+}
+
+.img-min {
+    display: none;
+}
+
+@media all and (max-width: 400px){
+    .img-med {
+        display: none;
+    }
+    
+    .img-min {
         display: block;
-        margin-left: -20px;
     }
 }
 
@@ -504,21 +516,7 @@ h4 {
 
 
 /* Section Mon cabinet */
-#mon_cabinet { 
-    display: -webkit-flex; /* Safari 6.1+ */
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-justify-content: center;
-    justify-content: center;
-    padding-left: 20px;
-}
 
-@media all and (max-width: 600px) {
-    #mon_cabinet figure {
-        margin: 10px;
-    }
-}
 
 
 

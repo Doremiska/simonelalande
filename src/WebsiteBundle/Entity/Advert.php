@@ -397,7 +397,7 @@ class Advert
      *
      * @return Advert
      */
-    public function setatWork($atWork)
+    public function setAtWork($atWork)
     {
         $this->atWork = $atWork;
 
@@ -409,7 +409,7 @@ class Advert
      *
      * @return bool
      */
-    public function getatWork()
+    public function getAtWork()
     {
         return $this->atWork;
     }

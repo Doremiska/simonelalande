@@ -17,7 +17,7 @@
         form_errors(form.phoneNumber) is not empty or
         form_errors(form.animatedBy) is not empty or
         form_errors(form.fonction) is not empty or
-        form_errors(form.isAtWork) is not empty or
+        form_errors(form.atWork) is not empty or
         form_errors(form.address.address) is not empty or
         form_errors(form.address.city) is not empty or
         form_errors(form.address.addressComplement) is not empty or
@@ -210,13 +210,13 @@
     {# Adresse #}
     <div class="form-group">
         <div class="form-label bold">
-            {{ form_label(form.isAtWork, "Adresse de travail") }}
+            {{ form_label(form.atWork, "Adresse de travail") }}
         </div>
         <div class="form-field" style="margin-top:5px;">
-            {{ form_widget(form.isAtWork) }}
+            {{ form_widget(form.atWork) }}
         </div>
     </div>
-    {{ form_errors(form.isAtWork) }}
+    {{ form_errors(form.atWork) }}
     
     <br>
     

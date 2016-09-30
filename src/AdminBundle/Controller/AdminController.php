@@ -12,6 +12,9 @@ class AdminController extends Controller
 { 
     public function addAction(Request $request)
     {
+        // Suppression automatique des annonces de plus d'un mois
+        $this->container->get('admin.purger.advert')->purge(30);
+        
         $advert = new Advert;
         $form = $this->createForm(AdvertType::class, $advert);
         

@@ -50,7 +50,7 @@ class AdvertType extends AbstractType
             ))
             ->add('dateComplement',     TextType::class, array('required' => false))
             ->add('content',            TextareaType::class, array('required' => false))
-            ->add('isAtWork',           CheckboxType::class, array('required' => false))
+            ->add('atWork',             CheckboxType::class, array('required' => false))
             ->add('link',               UrlType::class, array('required' => false))
             ->add('tariff',             TextType::class, array('required' => false))
             ->add('tariffReservation',  TextType::class, array('required' => false))

@@ -8,7 +8,10 @@
 
 {% block accueil %}style="background-color: rgb(253,172,83); color: rgb(128,51,0);"{% endblock %}
 
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/website/css/slider.css') }}" type="text/css">
+{% endblock %}
 
 {% block body %}
    
@@ -59,32 +62,40 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section Mon cabinet  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
     <section>
         <h2>Mon cabinet</h2>
-        <div id="mon_cabinet">
-            <figure>
-                <a class="medium" href="{{ asset('bundles/website/images/cabinet_1.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_1_medium.jpg') }}" alt="Image de la table de relaxation" /></a>
-                <a class="mini" href="{{ asset('bundles/website/images/cabinet_1.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_1_mini.jpg') }}" alt="Image de la table de relaxation" /></a>
-                <figcaption>Table de relaxation</figcaption>
-            </figure>
-            <figure>
-                <a class="medium" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_medium.jpg') }}" alt="Image dune séance d'Access Bars" /></a>
-                <a class="mini" href="{{ asset('bundles/website/images/cabinet_2.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_2_mini.jpg') }}" alt="Image dune séance d'Access Bars" /></a>
-                <figcaption>Séance Access Bars</figcaption>
-            </figure>
-            <figure>
-                <a class="medium" href="{{ asset('bundles/website/images/cabinet_3.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_3_medium.jpg') }}" alt="Image dun temps de dialogue" /></a>
-                <a class="mini" href="{{ asset('bundles/website/images/cabinet_3.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_3_mini.jpg') }}" alt="Image dun temps de dialogue" /></a>
+        <div class="slider">
+            <div class="slides">
+                <img class="img-med" src="{{ asset('bundles/website/images/cabinet_3-med.jpg') }}">
+                <img class="img-min" src="{{ asset('bundles/website/images/cabinet_3-min.jpg') }}">
                 <figcaption>Temps de dialogue</figcaption>
-            </figure>
-            <figure>
-                <a class="medium" href="{{ asset('bundles/website/images/cabinet_4.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_4_medium.jpg') }}" alt="Image de la salle d'attente" /></a>
-                <a class="mini" href="{{ asset('bundles/website/images/cabinet_4.jpg') }}"><img src="{{ asset('bundles/website/images/cabinet_4_mini.jpg') }}" alt="Image de la salle d'attente" /></a>
+            </div>
+            <div class="slides">
+                <img class="img-med" src="{{ asset('bundles/website/images/cabinet_2-med.jpg') }}">
+                <img class="img-min" src="{{ asset('bundles/website/images/cabinet_2-min.jpg') }}">
+                <figcaption>Séance Access Bars</figcaption>
+            </div>
+            <div class="slides">
+                <img class="img-med" src="{{ asset('bundles/website/images/cabinet_1-med.jpg') }}">
+                <img class="img-min" src="{{ asset('bundles/website/images/cabinet_1-min.jpg') }}">
+                <figcaption>Table de relaxation</figcaption>
+            </div>
+            <div class="slides">
+                <img class="img-med" src="{{ asset('bundles/website/images/cabinet_4-med.jpg') }}">
+                <img class="img-min" src="{{ asset('bundles/website/images/cabinet_4-min.jpg') }}">
                 <figcaption>Salle d'attente</figcaption>
-            </figure>      
-        </div>    
+            </div>
+            <div class="navigation-slider">
+                <div class="button-slider button-slider-left" onclick="plusDivs(-1)">&#10094;</div>
+                <div class="button-slider button-slider-right" onclick="plusDivs(1)">&#10095;</div>
+                <div class="badge-container">
+                    <span class="badges" onclick="currentDiv(1)"></span>
+                    <span class="badges" onclick="currentDiv(2)"></span>
+                    <span class="badges" onclick="currentDiv(3)"></span>
+                    <span class="badges" onclick="currentDiv(4)"></span>
+                </div>  
+            </div>      
+        </div>        
     </section>
-
-
-
+    
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - Section Actualités  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
     <section id="actualites">
@@ -123,4 +134,8 @@
 
     </section>
     
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/website/js/slider.js') }}"></script>
 {% endblock %}
